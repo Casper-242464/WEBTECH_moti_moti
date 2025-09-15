@@ -115,6 +115,13 @@ input[id="adress"], input[id="courierComment"] {
   width: 22.25vw;
 }
 
+input[value="Deliver"] {
+  background-color: #ffb6c1;
+  color: white;
+  width:10vw;
+  margin-left:28%;
+}
+
 /* Footer */
 footer {
   text-align: center;
