@@ -95,6 +95,26 @@ nav a:hover {
   background: #ff1493;
 }
 
+/* Delivery page */
+form {
+  position: absolute;
+  border: 2px;
+  left: 5vw;
+  top: 35vh;
+}
+
+input {
+  border: 2px solid #ffb6c1;
+  border-radius: 8px; 
+  padding: 12px;
+  margin: 0.25vw;
+  width: 10vw;
+}
+
+input[id="adress"], input[id="courierComment"] {
+  width: 22.25vw;
+}
+
 /* Footer */
 footer {
   text-align: center;
