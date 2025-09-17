@@ -24,15 +24,44 @@
   </header>
 
   <main>
-    <form >
-        <input type="text" id="adress" name="adress"><br>
-        <input type="number" id="entrance" name="entrance">
-        <input type="number" id="intercom" name="intercom"><br>
-        <input type="number" id="floor" name="floor">
-        <input type="number" id="apartment" name="apartment"><br>
-        <input type="text" id="courierComment" name="courierComment"><br>
-        <input type="submit" value="Deliver">
-    </form>
+    <!-- Delivery information -->
+    <div class="form-grid">
+      <div class="grid-item">  
+        <label for="street">Street:</label>
+        <input type="text" id="street">
+      </div>  
+      <div class="grid-two-column">
+          <div class="grid-item">
+              <label for="entrance">Entrance:</label>
+              <input type="text" id="entrance">
+          </div>
+          <div class="grid-item">
+              <label for="intercom">Intercom:</label>
+              <input type="text" id="intercom">
+          </div>
+          <div class="grid-item">
+              <label for="floor">Floor:</label>
+              <input type="text" id="floor">
+          </div>
+          <div class="grid-item">
+              <label for="apartment">Apartment:</label>
+              <input type="text" id="apartment">
+          </div>
+      </div>
+      <div class="grid-item">
+        <label for="comment">Comment for courier:</label>
+        <input type="text" id="comment">
+      </div>
+      <input type="button" value="Deliver!">
+    </div>
+    <!-- Shopping cart -->
+    <div id="cart">
+      <ul id="cart-items">
+          <!-- Cart items will be dynamically added here by JavaScript -->
+      </ul>
+      <p>Total: $<span id="cart-total">0.00</span></p>
+      <button id="clear-cart">Clear Cart</button>
+    </div>
   </main>
 
   <footer>
