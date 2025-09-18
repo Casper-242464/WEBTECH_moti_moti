@@ -102,7 +102,7 @@ nav a:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 5px;
-    max-width: 20vw;
+    max-width: 30vw;
     margin: 10px;
     position: absolute;
     top: 25vh;
@@ -154,10 +154,17 @@ label {
   padding: 6px;
   border: none;
   cursor: pointer;
+  box-shadow: 0 6px #d88d98;
 }
 
 #submit-delivery:hover {
-    color: black
+  color: black
+}
+
+#submit-delivery:active {
+  background-color: #ffb6c1;
+  box-shadow: 0 3px #d88d98;
+  transform: translateY(3px);
 }
 
 /* Shopping cart styling */
@@ -187,6 +194,13 @@ label {
     padding: 6px;
     border: none;
     cursor: pointer;
+    box-shadow: 0 6px #d88d98;
+}
+
+#clear-cart:active {
+    background-color: #ffb6c1;
+    box-shadow: 0 3px #d88d98;
+    transform: translateY(3px);
 }
 
 #clear-cart:hover {
