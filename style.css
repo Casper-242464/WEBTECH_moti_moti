@@ -120,7 +120,7 @@ nav a:hover {
     flex-direction: column;
 }
 
-/* General styling for all inputs */
+/* General styling for all Form inputs */
 .form-grid input {
     width: 100%;
     padding: 10px;
@@ -130,24 +130,34 @@ nav a:hover {
     box-sizing: border-box;
 }
 
-/* Label styling */
+/* Form Labels styling */
 label {
   font-family: Arial, sans-serif;
   background: #ffb6c1;
   color: #fff;
+  font-weight: bold;
   padding: 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   max-width: 100%;
 }
 
-/* Button styling */
-input[value="Deliver!"] {
+/* Form Button styling */
+#submit-delivery {
   background-color: #ffb6c1;
   color: white;
-  width:10vw;
+  font-weight: bold;
+  transition: 0.3s;
+  width: 50%;
   margin-left:25%;
   border-radius: 10px;
+  padding: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#submit-delivery:hover {
+    color: black
 }
 
 /* Shopping cart styling */
@@ -163,13 +173,24 @@ input[value="Deliver!"] {
     border-radius: 10px;
 }
 
+#cart-total {
+  font-weight: bold;
+  color : rgb(255, 255, 255);
+}
+
 #clear-cart {
     background-color: #ffb6c1;
     color: white;
+    font-weight: bold;
+    transition: 0.3s;
     border-radius: 10px;
     padding: 6px;
     border: none;
     cursor: pointer;
+}
+
+#clear-cart:hover {
+    color: black
 }
 
 /* Footer */
