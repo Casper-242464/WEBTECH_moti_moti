@@ -207,6 +207,34 @@ label {
     color: black
 }
 
+/* --------------- Locations page ---------------  */
+
+.location-details {  
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 35%;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffb6c1;
+  border: 2px solid #ffb6c1;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#location-paragraph {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.location-details h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 /* Footer */
 footer {
   text-align: center;
