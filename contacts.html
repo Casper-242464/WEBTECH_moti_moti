@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery | Moti-Moti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">Moti-Moti</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Main</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="center">
+        <h1>Контакты</h1>
+        <p class="muted">Свяжитесь с нами, чтобы заказать торт или десерты на праздник.</p>
+      </div>
+
+      <section class="grid" style="grid-template-columns: 1fr 1fr; gap:1.5rem;">
+        <div class="card">
+          <h2>Адрес и часы</h2>
+          <p><strong>Адрес:</strong> г. Астана, ул. Керей-Жанибек, 12</p>
+          <p><strong>Часы работы:</strong> Пн–Вс 09:00–20:00</p>
+          <p><strong>Телефон:</strong> +7 (700) 000-0000</p>
+          <p><strong>Email:</strong> info@motimoti.kz</p>
+          <div style="margin-top:1rem;">
+            <a class="button-style" href="https://maps.google.com" target="_blank" rel="noopener">Открыть в картах</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Форма обратной связи</h2>
+          <form class="form-card" action="#" method="post">
+            <label for="name">Имя</label>
+            <input id="name" class="input" type="text" name="name" placeholder="Ваше имя" required />
+
+            <label for="phone">Телефон</label>
+            <input id="phone" class="input" type="tel" name="phone" placeholder="+7 (___) ___-____" required />
+
+            <label for="email">Email</label>
+            <input id="email" class="input" type="email" name="email" placeholder="name@example.com" />
+
+            <label for="message">Сообщение / Заказ</label>
+            <textarea id="message" class="input" name="message" rows="5" placeholder="Опишите ваш заказ, дату и пожелания"></textarea>
+
+            <button class="button-style" type="submit">Отправить</button>
+          </form>
+        </div>
+      </section>
+
+      <section style="margin-top:1.5rem;">
+        <div class="card">
+          <h2>Социальные сети</h2>
+          <p class="muted">Подписывайтесь на нас для акций и новых вкусов:</p>
+          <p>
+            <a href="https://www.instagram.com/casvelvet?igsh=ampjMXk1ZmFwcGxj&utm_source=qr" target="_blank">Instagram</a> ·
+            <a href="https://wa.link/dxzaod" target="_blank">WhatsApp</a>
+          </p>
+        </div>
+      </section>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <small>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</small>
+      <div>
+        <small>© <span id="year2"></span> Moti-Moti</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
