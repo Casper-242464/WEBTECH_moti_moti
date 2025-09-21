@@ -533,3 +533,143 @@ footer {
 .gallery img:hover {
   transform: scale(1.05); 
 }
+
+/* --------------- Delivery page --------------- */
+
+/* Form layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    max-width: 30vw;
+    margin: 10px;
+    position: absolute;
+    top: 25vh;
+    left: 15vw;
+}
+
+.grid-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* General styling for all Form inputs */
+.form-grid input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Form Labels styling */
+label {
+  font-family: Arial, sans-serif;
+  background: #ffb6c1;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-width: 100%;
+}
+
+/* Form Button styling */
+#submit-delivery {
+  background-color: #ffb6c1;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+  width: 50%;
+  margin-left:25%;
+  border-radius: 10px;
+  padding: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px #d88d98;
+}
+
+#submit-delivery:hover {
+  color: black
+}
+
+#submit-delivery:active {
+  background-color: #ffb6c1;
+  box-shadow: 0 3px #d88d98;
+  transform: translateY(3px);
+}
+
+/* Shopping cart styling */
+
+#cart {
+    position: absolute;
+    top: 25vh;
+    right: 15vw;
+    width: 30vw;
+    border: 5px solid #ffb6c1;
+    padding: 10px;
+    background: #ffdee3;
+    border-radius: 10px;
+}
+
+#cart-total {
+  font-weight: bold;
+  color : rgb(255, 255, 255);
+}
+
+#clear-cart {
+    background-color: #ffb6c1;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    border-radius: 10px;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px #d88d98;
+}
+
+#clear-cart:active {
+    background-color: #ffb6c1;
+    box-shadow: 0 3px #d88d98;
+    transform: translateY(3px);
+}
+
+#clear-cart:hover {
+    color: black
+}
+
+/* --------------- Locations page ---------------  */
+
+.location-details {  
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 35%;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffb6c1;
+  border: 2px solid #ffb6c1;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#location-paragraph {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.location-details h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    text-align: center;
+}
