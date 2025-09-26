@@ -1,4 +1,4 @@
-/* --- Team card horizontal layout --- */
+/* 
 .team-card {
   display: flex;
   flex-direction: row;
@@ -64,7 +64,7 @@
     align-items: center;
   }
 }
-/* Общие стили */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -83,7 +83,7 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   float: left;
   width: 300px;
-  /* max-width: 300px; */
+
 
 }
 .about-member .about-text {
@@ -120,10 +120,10 @@ body {
   line-height: 1.6;
 }
 
-/* Шапка */
+
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content:baseline;
   align-items: center;
   padding: 15px 30px;
   background: #ffb6c1;
@@ -135,7 +135,7 @@ header {
   color: #fff;
 }
 
-/* Навигация */
+
 nav ul {
   list-style: none;
   margin: 0;
@@ -155,7 +155,7 @@ nav a:hover {
   color: #333;
 }
 
-/* Hero */
+
 .hero {
   text-align: center;
   padding: 80px 20px;
@@ -181,7 +181,7 @@ nav a:hover {
   background: #ff1493;
 }
 
-/* Footer */
+
 footer {
   text-align: center;
   padding: 15px;
@@ -192,344 +192,217 @@ footer {
   bottom: 0;
   width: 100%;
 }
-/* Mereke's code */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 5px;
-    max-width: 30vw;
-    margin: 10px;
-    position: absolute;
-    top: 25vh;
-    left: 15vw;
+ */
+
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
-.grid-two-column {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-}
+header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+main { grid-area: main; }
+footer { grid-area: footer; }
 
-.grid-item {
-    display: flex;
-    flex-direction: column;
-}
-
-/* General styling for all Form inputs */
-.form-grid input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    box-sizing: border-box;
-}
-
-/* Form Labels styling */
-label {
-  font-family: Arial, sans-serif;
+/* --- HEADER (Flexbox inside Grid) --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
   background: #ffb6c1;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  max-width: 100%;
 }
-
-/* Form Button styling */
-#submit-delivery {
-  background-color: #ffb6c1;
-  color: white;
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #fff;
   font-weight: bold;
   transition: 0.3s;
-  width: 50%;
-  margin-left:25%;
-  border-radius: 10px;
-  padding: 6px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 6px #d88d98;
+}
+nav a:hover { color: #333; }
+
+/* --- SIDEBAR --- */
+.sidebar {
+  background: #ffe4e1;
+  padding: 20px;
+}
+.sidebar h2 {
+  margin-bottom: 10px;
+  color: #d6336c;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar li {
+  margin: 10px 0;
+}
+.sidebar a {
+  text-decoration: none;
+  color: #444;
+}
+.sidebar a:hover {
+  color: #d6336c;
 }
 
-#submit-delivery:hover {
-  color: black
-}
-
-#submit-delivery:active {
-  background-color: #ffb6c1;
-  box-shadow: 0 3px #d88d98;
-  transform: translateY(3px);
-}
-
-/* Shopping cart styling */
-
-#cart {
-    position: absolute;
-    top: 25vh;
-    right: 15vw;
-    width: 30vw;
-    border: 5px solid #ffb6c1;
-    padding: 10px;
-    background: #ffdee3;
-    border-radius: 10px;
-}
-
-#cart-total {
-  font-weight: bold;
-  color : rgb(255, 255, 255);
-}
-
-#clear-cart {
-    background-color: #ffb6c1;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-    border-radius: 10px;
-    padding: 6px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px #d88d98;
-}
-
-#clear-cart:active {
-    background-color: #ffb6c1;
-    box-shadow: 0 3px #d88d98;
-    transform: translateY(3px);
-}
-
-#clear-cart:hover {
-    color: black
-}
-
-/* Footer */
-footer {
+/* --- HERO --- */
+.hero {
   text-align: center;
-  padding: 15px;
-  background: #ffb6c1;
-  color: #fff;
-  margin-top: 30px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  padding: 50px 20px;
+  background: #fff0f5;
+  border-radius: 8px;
+  margin: 20px 0;
 }
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  /* gap: 2rem;
-  margin: 2rem 0; */
-}
-.product-card {
-  margin: 16px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  overflow: hidden;
+.hero h1 { margin-bottom: 20px; }
+
+/* --- FLEXBOX CARDS --- */
+.card-row {
   display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.2s;
+  gap: 20px;
+  margin: 20px 0;
 }
-.product-card:hover {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-}
-.product-image img {
-  width: 100%;
+.card-row img{ width: 100%;
   height: 180px;
   object-fit: cover;
   display: block;
-  background: #f8f8f8;
-}
-.product-info {
-  padding: 1rem;
+  background: #f8f8f8;}
+.card {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.product-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 0.5rem 0 0.25rem 0;
-}
-.product-desc {
-  color: #666;
-  font-size: 0.97rem;
-  margin-bottom: 0.7rem;
-}
-.product-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-.product-price {
-  font-size: 1.15rem;
-  font-weight: bold;
-  color: #2e7d32;
-}
-.add-to-cart {
-  background: #ff6f61;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
-  text-decoration: none;
-}
-.add-to-cart:hover {
-  background: #e6513c;
-}
-@media (max-width: 600px) {
-  .products-grid {
-    grid-template-columns: 1fr;
-  }}
-
-
-  /* Zere's code:*/
-
-  /* Form layout */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 5px;
-    max-width: 30vw;
-    margin: 10px;
-    position: absolute;
-    top: 25vh;
-    left: 15vw;
-}
-
-.grid-two-column {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-}
-
-.grid-item {
-    display: flex;
-    flex-direction: column;
-}
-
-/* General styling for all Form inputs */
-.form-grid input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    box-sizing: border-box;
-}
-
-/* Form Labels styling */
-label {
-  font-family: Arial, sans-serif;
-  background: #ffb6c1;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  max-width: 100%;
-}
-
-/* Form Button styling */
-#submit-delivery {
-  background-color: #ffb6c1;
-  color: white;
-  font-weight: bold;
-  transition: 0.3s;
-  width: 50%;
-  margin-left:25%;
+  background: #fff;
   border-radius: 10px;
-  padding: 6px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+button {
+  margin-top: 10px;
+  padding: 8px 15px;
   border: none;
+  background: #ff69b4;
+  color: white;
+  border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 6px #d88d98;
+}
+button:hover {
+  background: #ff1493;
 }
 
-#submit-delivery:hover {
-  color: black
-}
 
-#submit-delivery:active {
-  background-color: #ffb6c1;
-  box-shadow: 0 3px #d88d98;
-  transform: translateY(3px);
-}
-
-/* Shopping cart styling */
-
-#cart {
-    position: absolute;
-    top: 25vh;
-    right: 15vw;
-    width: 30vw;
-    border: 5px solid #ffb6c1;
-    padding: 10px;
-    background: #ffdee3;
-    border-radius: 10px;
-}
-
-#cart-total {
-  font-weight: bold;
-  color : rgb(255, 255, 255);
-}
-
-#clear-cart {
-    background-color: #ffb6c1;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-    border-radius: 10px;
-    padding: 6px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px #d88d98;
-}
-
-#clear-cart:active {
-    background-color: #ffb6c1;
-    box-shadow: 0 3px #d88d98;
-    transform: translateY(3px);
-}
-
-#clear-cart:hover {
-    color: black
-}
-
-/* Footer */
 footer {
   text-align: center;
   padding: 15px;
   background: #ffb6c1;
   color: #fff;
-  margin-top: 30px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
-/* --- Gallery page --- */
-.gallery {
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ff69b4;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff1493;
+}
+
+/* about */
+
+/* About section */
+.about-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.team-section {
+  margin-top: 40px;
+}
+
+.team-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Flexbox row of cards */
+.team-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;             
+  flex-wrap: wrap; /* allows cards to wrap on small screens */
   justify-content: center;
+  gap: 24px;
 }
 
-.gallery img {
-  width: 300px;           
-  height: 200px;         
-  object-fit: cover;     
-  border-radius: 10px;   
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-  transition: transform 0.3s ease;      
+/* Each card */
+.team-card {
+  flex: 1 1 280px; /* flexible, min 280px */
+  max-width: 320px;
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(180,180,180,0.07);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.gallery img:hover {
-  transform: scale(1.05); 
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Team photo */
+ .team-photo {
+    width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+    border-radius: 12px;
+  }
+
+/* Text inside card */
+.team-info {
+  text-align: center;
+}
+
+.team-name {
+  margin: 0 0 12px 0;
+  font-size: 1.3rem;
+  color: #222;
+  font-weight: 700;
+}
+
+.team-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
 }
