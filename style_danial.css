@@ -1,7 +1,7 @@
+/* --------------- Delivery page --------------- */
 
-  /* Danial's code:*/
-
-  .form-grid {
+/* Form layout */
+.form-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 5px;
@@ -32,6 +32,8 @@
     border-bottom-right-radius: 10px;
     box-sizing: border-box;
 }
+
+/* Form Labels styling */
 label {
   font-family: Arial, sans-serif;
   background: #ffb6c1;
@@ -106,4 +108,36 @@ label {
 
 #clear-cart:hover {
     color: black
+}
+
+/* --------------- Locations page ---------------  */
+
+.location-details {  
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 35%;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffb6c1;
+  border: 2px solid #ffb6c1;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#location-paragraph {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.location-details h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    text-align: center;
+}
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
