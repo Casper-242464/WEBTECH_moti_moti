@@ -36,6 +36,11 @@ nav a.active {
   text-decoration: underline;
 }
 
+.page-title {
+  text-align: center;
+  color: #d6336c;
+}
+
 /* --- Footer --- */
 footer {
   text-align: center;

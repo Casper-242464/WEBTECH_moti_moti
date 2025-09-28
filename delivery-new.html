@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moti-Moti | Delivery</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style_danial.css">
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">Moti-Moti</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Main</a></li>
+                    <li><a href="delivery.html">Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                    <li><a href="locations.html">Locations</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+        </aside>
+    <main>
+        <!--        Deliver INFO       -->
+        <div class="form-grid">
+            <div class="grid-item">
+                <label for="street">Adress:</label>
+                <input type="text" id="street" placeholder="Your Adress">
+            </div>
+            <div class="grid-two-column">
+                <div class="grid-item">
+                    <label for="entrance">Entrance:</label>
+                    <input type="number" id="entrance" placeholder="Entrance">
+                </div>
+                <div class="grid-item">
+                    <label for="intercom">intercom:</label>
+                    <input type="number" id="intercom" placeholder="Intercom">
+                </div>
+            </div>
+            <div class="grid-two-column">
+                <div class="grid-item">
+                    <label for="floor">Floor:</label>
+                    <input type="number" id="floor" placeholder="Floor">
+                </div>
+                <div class="grid-item">
+                    <label for="apartment">Apartment:</label>
+                    <input type="number" id="apartment" placeholder="Apartment">
+                </div>
+            </div>
+            <div class="grid-item">
+                <label for="comment">Your Comments</label>
+                <input type="text" id="comment" placeholder="Comment for courier">
+        </div>
+        <!--      Shopping cart      -->
+        <div id="cart">
+            <ul id="cart-items">
+
+            </ul>
+            <p id="cart-total">Total: $<span id="cart-total">0.00</span></p>
+            <button id="clear-cart">Clear Cart</button>
+        </div>
+    </main>
+    <footer>
+        <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
+    </footer>
+</body>    
+</html>
