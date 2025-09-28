@@ -40,46 +40,46 @@
   <main>
     <section class="container">
       <div class="center">
-        <h1>Контакты</h1>
-        <p class="muted">Свяжитесь с нами, чтобы заказать торт или десерты на праздник.</p>
+        <h1>Contacts</h1>
+        <p class="muted">Get in touch with us to order a cake or desserts for your event.</p>
       </div>
 
-      <section class="grid" style="grid-template-columns: 1fr 1fr; gap:1.5rem;">
+      <section class="grid">
         <div class="card">
-          <h2>Адрес и часы</h2>
-          <p><strong>Адрес:</strong> г. Астана, ул. Керей-Жанибек, 12</p>
-          <p><strong>Часы работы:</strong> Пн–Вс 09:00–20:00</p>
-          <p><strong>Телефон:</strong> +7 (700) 000-0000</p>
+          <h2>Address & Hours</h2>
+          <p><strong>Address:</strong> Astana, Kerey-Zhanibek St, 12</p>
+          <p><strong>Working Hours:</strong> Mon–Sun 09:00–20:00</p>
+          <p><strong>Phone:</strong> +7 (700) 000-0000</p>
           <p><strong>Email:</strong> info@motimoti.kz</p>
           <div style="margin-top:1rem;">
-            <a class="button-style" href="https://maps.google.com" target="_blank" rel="noopener">Открыть в картах</a>
+            <a class="button-style" href="https://maps.google.com" target="_blank" rel="noopener">Open in Maps</a>
           </div>
         </div>
 
         <div class="card">
-          <h2>Форма обратной связи</h2>
+          <h2>Feedback Form</h2>
           <form class="form-card" action="#" method="post">
-            <label for="name">Имя</label>
-            <input id="name" class="input" type="text" name="name" placeholder="Ваше имя" required />
+            <label for="name">Name</label>
+            <input id="name" class="input" type="text" name="name" placeholder="Your name" required />
 
-            <label for="phone">Телефон</label>
+            <label for="phone">Phone</label>
             <input id="phone" class="input" type="tel" name="phone" placeholder="+7 (___) ___-____" required />
 
             <label for="email">Email</label>
             <input id="email" class="input" type="email" name="email" placeholder="name@example.com" />
 
-            <label for="message">Сообщение / Заказ</label>
-            <textarea id="message" class="input" name="message" rows="5" placeholder="Опишите ваш заказ, дату и пожелания"></textarea>
+            <label for="message">Message / Order</label>
+            <textarea id="message" class="input" name="message" rows="5" placeholder="Describe your order, date, and requests"></textarea>
 
-            <button class="button-style" type="submit">Отправить</button>
+            <button class="button-style" type="submit">Send</button>
           </form>
         </div>
       </section>
 
       <section style="margin-top:1.5rem;">
         <div class="card">
-          <h2>Социальные сети</h2>
-          <p class="muted">Подписывайтесь на нас для акций и новых вкусов:</p>
+          <h2>Social Media</h2>
+          <p class="muted">Follow us for promotions and new flavors:</p>
           <p>
             <a href="https://www.instagram.com/casvelvet?igsh=ampjMXk1ZmFwcGxj&utm_source=qr" target="_blank">Instagram</a> ·
             <a href="https://wa.link/dxzaod" target="_blank">WhatsApp</a>
@@ -87,15 +87,21 @@
         </div>
       </section>
     </section>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br>
   </main>
 
   <footer>
-    <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
+    <div class="footer-inner">
+      <small>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</small>
+      <div>
+        <small>© <span id="year2"></span> Moti-Moti</small>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
