@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Moti-Moti | Desserts</title>
   <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style_danial.css">
 </head>
 <body>
@@ -14,14 +15,11 @@
       <div class="logo">Moti-Moti</div>
       <nav>
         <ul>
-          <li><a href="index.html">Main</a></li>
-        
+          <li><a href="index.html">Main</a></li>        
           <li><a href="delivery.html">Delivery</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contacts.html">Contacts</a></li>
-          <li><a href="locations.html">Locations</a></li>
-          
-          
+          <li><a href="locations.html">Locations</a></li>         
         </ul>
       </nav>
     </header>
@@ -36,50 +34,56 @@
       
       </ul>
     </aside>
-
   <main>
 
     <!-- Delivery information -->
 
-    <div class="form-grid">
-      <div class="grid-item">  
-        <label for="street">Street:</label>
-        <input type="text" id="street" placeholder="Your Adress" required>
-      </div>  
-      <div class="grid-two-column">
-          <div class="grid-item">
-              <label for="entrance">Entrance:</label>
-              <input type="text" id="entrance" placeholder="Entrance" required>
-          </div>
-          <div class="grid-item">
-              <label for="intercom">Intercom:</label>
-              <input type="text" id="intercom" placeholder="Intercom" required>
-          </div>
-          <div class="grid-item">
-              <label for="floor">Floor:</label>
-              <input type="text" id="floor" placeholder="Floor Number" required>
-          </div>
-          <div class="grid-item">
-              <label for="apartment">Apartment:</label>
-              <input type="text" id="apartment" placeholder="Apartment Number" required>
-          </div>
-      </div>
-      <div class="grid-item">
-        <label for="comment">Comment for courier:</label>
-        <input type="text" id="comment" placeholder="Your comments" required>
-      </div>
-      <button id="submit-delivery">Deliver!</button>
-    </div>
+     <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="form-grid">
+            <div class="grid-item">  
+              <label for="street">Street:</label>
+              <input type="text" id="street" placeholder="Your Adress" required>
+            </div>  
+            <div class="grid-two-column">
+                <div class="grid-item">
+                    <label for="entrance">Entrance:</label>
+                    <input type="text" id="entrance" placeholder="Entrance" required>
+                </div>
+                <div class="grid-item">
+                    <label for="intercom">Intercom:</label>
+                    <input type="text" id="intercom" placeholder="Intercom" required>
+                </div>
+                <div class="grid-item">
+                    <label for="floor">Floor:</label>
+                    <input type="text" id="floor" placeholder="Floor Number" required>
+                </div>
+                <div class="grid-item">
+                    <label for="apartment">Apartment:</label>
+                    <input type="text" id="apartment" placeholder="Apartment Number" required>
+                </div>
+            </div>
+            <div class="grid-item">
+              <label for="comment">Comment for courier:</label>
+              <input type="text" id="comment" placeholder="Your comments" required>
+            </div>
+            <button class="btn btn-primary btn-lg w-100 mb-3" id="submit-delivery">Deliver!</button>
 
-    <!-- Shopping cart -->
+</div>
+        <div class="col-lg-6">
 
-    <div id="cart">
-      <ul id="cart-items">
-          <!-- Cart items will be added here by JavaScript -->
-      </ul>
-      <p id="cart-total">Total: $<span id="cart-total">0.00</span></p>
-      <button id="clear-cart">Clear Cart</button>
-    </div>
+        <!-- Shopping cart -->
+          <div id="cart">
+            <ul id="cart-items">
+                <!-- Cart items will be added here by JavaScript -->
+            </ul>
+            <p id="cart-total">Total: $<span id="cart-total">0.00</span></p>
+            <button class="btn btn-outline-danger btn-sm" id="clear-cart">Clear Cart</button>
+          </div>
+        </div>
+      </div>
+
   </main>
 
   <footer>
