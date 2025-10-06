@@ -3,6 +3,7 @@
 /* Responsive font sizes */
 body {
   font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
 }
 @media (min-width: 576px) {
   body { font-size: 16px; }
@@ -127,8 +128,8 @@ label {
 
 .location-details {  
   margin: 0 auto;
-  margin-top: 100px;
-  width: 35%;
+  margin-top: 20px;      /* Reduced top margin */
+  width: 100%;           /* Make box fill the Bootstrap column */
   align-items: center;
   padding: 20px;
   background-color: #ffb6c1;
