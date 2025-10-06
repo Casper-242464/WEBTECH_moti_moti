@@ -129,8 +129,8 @@ label {
 
 .location-details {  
   margin: 0 auto;
-  margin-top: 20px;      /* Reduced top margin */
-  width: 100%;           /* Make box fill the Bootstrap column */
+  margin-top: 20px;      
+  width: 100%;           
   align-items: center;
   padding: 20px;
   background-color: #ffb6c1;
