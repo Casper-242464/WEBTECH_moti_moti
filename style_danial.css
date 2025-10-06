@@ -1,9 +1,9 @@
-/* --------------- Media query for mobile responsiveness --------------- */
+/* --------------- Delivery page --------------- */
 
-/* Responsive font sizes */
+/* Form layout */
+
 body {
   font-size: 14px;
-  font-family: "Times New Roman", Times, serif;
 }
 @media (min-width: 576px) {
   body { font-size: 16px; }
@@ -15,15 +15,13 @@ body {
   body { font-size: 20px; }
 }
 
-/* --------------- Delivery page --------------- */
-
-/* Form layout */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 5px;
     max-width: 30vw;
     margin: 10px;
+    /* position: absolute; */
     top: 25vh;
     left: 15vw;
 }
@@ -68,6 +66,7 @@ label {
   font-weight: bold;
   transition: 0.3s;
   width: 50%;
+  /* margin-left:25%; */
   border-radius: 10px;
   padding: 6px;
   border: none;
@@ -88,6 +87,7 @@ label {
 /* Shopping cart styling */
 
 #cart {
+    /* position: absolute; */
     top: 25vh;
     right: 15vw;
     width: 30vw;
@@ -128,8 +128,8 @@ label {
 
 .location-details {  
   margin: 0 auto;
-  margin-top: 20px;      /* Reduced top margin */
-  width: 100%;           /* Make box fill the Bootstrap column */
+  margin-top: 100px;
+  width: 35%;
   align-items: center;
   padding: 20px;
   background-color: #ffb6c1;
