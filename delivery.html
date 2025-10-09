@@ -41,36 +41,39 @@
      <div class="container my-5">
       <div class="row">
         <div class="col-lg-6 mb-4">
-          <div class="form-grid">
-            <div class="grid-item">  
-              <label for="street">Street:</label>
-              <input type="text" id="street" placeholder="Your Adress" required>
-            </div>  
-            <div class="grid-two-column">
-                <div class="grid-item">
-                    <label for="entrance">Entrance:</label>
-                    <input type="text" id="entrance" placeholder="Entrance" required>
-                </div>
-                <div class="grid-item">
-                    <label for="intercom">Intercom:</label>
-                    <input type="text" id="intercom" placeholder="Intercom" required>
-                </div>
-                <div class="grid-item">
-                    <label for="floor">Floor:</label>
-                    <input type="text" id="floor" placeholder="Floor Number" required>
-                </div>
-                <div class="grid-item">
-                    <label for="apartment">Apartment:</label>
-                    <input type="text" id="apartment" placeholder="Apartment Number" required>
-                </div>
+          <!-- Converted form-grid -> Bootstrap form classes -->
+          <div class="p-0">
+            <div class="mb-3">
+              <label for="street" class="form-label">Street:</label>
+              <input type="text" id="street" class="form-control" placeholder="Your Address" required>
             </div>
-            <div class="grid-item">
-              <label for="comment">Comment for courier:</label>
-              <input type="text" id="comment" placeholder="Your comments" required>
-            </div>
-            <button class="btn btn-primary btn-lg w-100 mb-3" id="submit-delivery">Deliver!</button>
 
-</div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="entrance" class="form-label">Entrance:</label>
+                <input type="text" id="entrance" class="form-control" placeholder="Entrance" required>
+              </div>
+              <div class="col-6">
+                <label for="intercom" class="form-label">Intercom:</label>
+                <input type="text" id="intercom" class="form-control" placeholder="Intercom" required>
+              </div>
+              <div class="col-6">
+                <label for="floor" class="form-label">Floor:</label>
+                <input type="text" id="floor" class="form-control" placeholder="Floor Number" required>
+              </div>
+              <div class="col-6">
+                <label for="apartment" class="form-label">Apartment:</label>
+                <input type="text" id="apartment" class="form-control" placeholder="Apartment Number" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="comment" class="form-label">Comment for courier:</label>
+              <input type="text" id="comment" class="form-control" placeholder="Your comments" required>
+            </div>
+
+            <button class="btn btn-primary btn-lg w-100 mb-3" id="submit-delivery" type="button">Deliver!</button>
+          </div>
         </div> <!-- Closing div for col-lg-6 mb-4 -->
         <div class="col-lg-6">
 
