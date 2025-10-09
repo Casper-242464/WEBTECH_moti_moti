@@ -50,7 +50,6 @@ body {
 
 /* Form Labels styling */
 label {
-  font-family: Arial, sans-serif;
   background: #ffb6c1;
   color: #fff;
   font-weight: bold;
@@ -66,7 +65,6 @@ label {
   font-weight: bold;
   transition: 0.3s;
   width: 50%;
-  /* margin-left:25%; */
   border-radius: 10px;
   padding: 6px;
   border: none;
