@@ -7,10 +7,10 @@ body {
   font-size: 14px;
 }
 @media (min-width: 576px) {
-  body { font-size: 16px; }
+  body { font-size: 40px; }
 }
 @media (min-width: 768px) {
-  body { font-size: 18px; }
+  body { font-size: 40px; }
 }
 @media (min-width: 992px) {
   body { font-size: 20px; }
@@ -20,11 +20,11 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 5px;
-    max-width: 30vw;
+    width: 30vw;
     margin: 10px;
-    /* position: absolute; */
-    top: 25vh;
-    left: 15vw;
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
 }
 
 .grid-two-column {
@@ -54,7 +54,8 @@ label {
   color: #fff;
   font-weight: bold;
   padding: 10px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   max-width: 100%;
 }
 
@@ -85,9 +86,9 @@ label {
 /* Shopping cart styling */
 
 #cart {
-    /* position: absolute; */
-    top: 25vh;
-    right: 15vw;
+    position: absolute;
+    top: 11vh;
+    right: 10vw;
     width: 30vw;
     border: 5px solid #ffb6c1;
     padding: 10px;
@@ -127,7 +128,7 @@ label {
 .location-details {  
   margin: 0 auto;
   margin-top: 20px;      
-  width: 100%;           
+  width: 50%;           
   align-items: center;
   padding: 20px;
   background-color: #ffb6c1;
