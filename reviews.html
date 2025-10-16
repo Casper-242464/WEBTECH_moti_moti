@@ -2,27 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Moti-Moti | Desserts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moti-Moti | Reviews</title>
+      <link rel="stylesheet" href="style_zere.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style_zere.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body>
-
- <div class="grid-container">
-    <!-- Header -->
-    <header>
+<div class="grid-container">
+  
+  <header>
       <div class="logo">Moti-Moti</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Main</a></li>        
-          <li><a href="delivery.html">Delivery</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contacts.html">Contacts</a></li>
-          <li><a href="locations.html">Locations</a></li>         
-        </ul>
-      </nav>
+   <nav class="mt-2">
+  <ul class="nav nav-pills justify-content-center fw-bold">
+    <li class="nav-item"><a class="nav-link text-white" href="index.html">Main</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="delivery.html">Delivery</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Contacts</a></li>
+    <li class="nav-item"><a class="nav-link text-white" href="locations.html">Locations</a></li>
+  </ul>
+</nav>
     </header>
 
     <!-- Sidebar -->
@@ -35,49 +33,54 @@
       
       </ul>
     </aside>
-  <main class="container py-5">
-    <h1 class="text-center mb-5 text-primary">Customer Reviews 💬</h1>
+  <main class="content">    <div class="reviews">
+      <h2>Customer Reviews 💬</h2>
 
-    <!-- Bootstrap Cards for Reviews -->
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card review-card h-100 shadow-sm">
-          <div class="card-body text-center">
-            <h5 class="card-title">Anna K.</h5>
-            <p class="stars">⭐⭐⭐⭐⭐</p>
-            <p class="card-text">The best mochi I have ever tried! Soft, fresh, and full of flavor. 🍓</p>
-          </div>
-        </div>
+      <div class="review active">
+        <h3>Anna K.</h3>
+        <p>⭐⭐⭐⭐⭐</p>
+        <p>The best mochi I have ever tried! Soft, fresh, and full of flavor. 🍓</p>
       </div>
 
-      <div class="col-md-4">
-        <div class="card review-card h-100 shadow-sm">
-          <div class="card-body text-center">
-            <h5 class="card-title">James L.</h5>
-            <p class="stars">⭐⭐⭐⭐</p>
-            <p class="card-text">Very tasty! Delivery was fast and packaging was beautiful. 💛</p>
-          </div>
-        </div>
+      <div class="review">
+        <h3>James L.</h3>
+        <p>⭐⭐⭐⭐</p>
+        <p>Very tasty! Delivery was fast and packaging was beautiful.</p>
       </div>
 
-      <div class="col-md-4">
-        <div class="card review-card h-100 shadow-sm">
-          <div class="card-body text-center">
-            <h5 class="card-title">Sakura M.</h5>
-            <p class="stars">⭐⭐⭐⭐⭐</p>
-            <p class="card-text">I love Moti-Moti! Reminds me of my childhood in Japan. 💖</p>
-          </div>
-        </div>
+      <div class="review">
+        <h3>Sakura M.</h3>
+        <p>⭐⭐⭐⭐⭐</p>
+        <p>I love Moti-Moti! Reminds me of my childhood in Japan. 💖</p>
+      </div>
+
+      <div class="review-buttons">
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="text-center py-3 bg-light mt-5">
+  <footer>
     <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const reviews = document.querySelectorAll('.review');
+    let current = 0;
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      reviews[current].classList.remove('active');
+      current = (current + 1) % reviews.length;
+      reviews[current].classList.add('active');
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      reviews[current].classList.remove('active');
+      current = (current - 1 + reviews.length) % reviews.length;
+      reviews[current].classList.add('active');
+    });
+  </script>
+
 </body>
 </html>

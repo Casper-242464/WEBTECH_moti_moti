@@ -200,6 +200,8 @@ footer {
   flex-direction: column;
   align-items: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  will-change: transform;
+  touch-action: none;
 }
 
 .team-card:hover {
@@ -236,4 +238,53 @@ footer {
 
 
 
+/* === Общие стили, минимальные правки для FAQ/аккордеона и анимаций === */
 
+.accordion-question {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease;
+}
+.accordion-question:active,
+.accordion-question:focus {
+  transform: translateY(1px);
+  outline: none;
+}
+
+/* Аккордеон: изначально скрыт (через max-height), но display оставляем блок для корректного расчёта scrollHeight */
+.accordion-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.35s ease;
+}
+
+/* Когда открыт — класс .open будет добавлен скриптом */
+.accordion-answer.open {
+  opacity: 1;
+  /* max-height будет устанавливаться инлайново через JS (answer.scrollHeight + 'px') */
+}
+
+/* Fade-in появление при скролле */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Небольшая тень и отступ для лучшего визуала */
+.accordion-item .accordion-question {
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* Адаптация ширины на маленьких экранах */
+@media (max-width: 767px) {
+  .accordion.w-75 {
+    width: 95% !important;
+  }
+}
