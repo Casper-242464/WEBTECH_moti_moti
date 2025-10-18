@@ -1,20 +1,87 @@
+/* --- Общие стили --- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff0f5;
+  color: #333;
+  transition: background 0.5s, color 0.5s;
+}
 
+/* Ночная тема */
+body.night {
+  background: #2b2b2b;
+  color: #fff;
+}
 
-.toggle-btn {
-  display: block;
-  margin: 20px auto;
+header {
+  background: #ffb6c1;
+  padding: 15px 0;
+  text-align: center;
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #ffb6c1;
+  color: #fff;
+  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* --- Кнопки --- */
+button {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.05);
+}
+
+.toggle-btn, #themeBtn {
+  margin: 10px;
   padding: 10px 20px;
   background: #ffb6c1;
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.toggle-btn:hover {
+.toggle-btn:hover, #themeBtn:hover {
   background: #ff8aa1;
+}
+
+/* --- Галерея --- */
+.page-title {
+  text-align: center;
+  margin: 20px 0;
 }
 
 .gallery.flexbox {
@@ -40,14 +107,10 @@
   transition: transform 0.3s ease;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
 /* --- Отзывы --- */
 .reviews {
   max-width: 800px;
-  margin: 60px auto;
+  margin: 80px auto;
   padding: 20px;
   background: #fffafc;
   border-radius: 12px;
@@ -67,6 +130,7 @@
   padding: 15px;
   margin-bottom: 15px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  opacity: 0;
   transition: opacity 0.5s ease;
 }
 
@@ -80,21 +144,16 @@
   color: #c2185b;
 }
 
-.review p {
-  margin: 5px 0;
-}
-
-.review-buttons button {
+.review-buttons button, #randomBtn {
   background: #ff8aa1;
   color: #fff;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
   margin: 5px;
-  cursor: pointer;
   transition: background 0.3s;
 }
 
-.review-buttons button:hover {
+.review-buttons button:hover, #randomBtn:hover {
   background: #ff4d7d;
 }

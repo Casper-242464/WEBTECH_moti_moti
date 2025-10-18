@@ -4,36 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moti-Moti | Reviews</title>
-      <link rel="stylesheet" href="style_zere.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="grid-container">
-  
-  <header>
-      <div class="logo">Moti-Moti</div>
-   <nav class="mt-2">
-  <ul class="nav nav-pills justify-content-center fw-bold">
-    <li class="nav-item"><a class="nav-link text-white" href="index.html">Main</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="delivery.html">Delivery</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Contacts</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="locations.html">Locations</a></li>
-  </ul>
-</nav>
-    </header>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2>Categories</h2>
+  <header>
+    <div class="logo">Moti-Moti</div>
+    <nav>
       <ul>
-         <li><a href="products.html">Products</a></li>
-       <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="reviews.html">Reviews</a></li>
-      
+        <li><a href="index.html">Main</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="reviews.html" class="active">Reviews</a></li>
       </ul>
-    </aside>
-  <main class="content">    <div class="reviews">
+    </nav>
+  </header>
+
+  <main>
+    <div class="reviews">
       <h2>Customer Reviews 💬</h2>
 
       <div class="review active">
@@ -58,6 +50,9 @@
         <button id="prevBtn">Previous</button>
         <button id="nextBtn">Next</button>
       </div>
+
+      <button id="randomBtn">🎲 Random Review</button>
+      <audio id="clickSound" src="click.mp3" preload="auto"></audio>
     </div>
   </main>
 
@@ -67,18 +62,51 @@
 
   <script>
     const reviews = document.querySelectorAll('.review');
+    const sound = document.getElementById('clickSound');
     let current = 0;
 
+    function showReview(index) {
+      reviews.forEach(r => r.classList.remove('active'));
+      reviews[index].classList.add('active');
+    }
+
     document.getElementById('nextBtn').addEventListener('click', () => {
-      reviews[current].classList.remove('active');
       current = (current + 1) % reviews.length;
-      reviews[current].classList.add('active');
+      showReview(current);
+      sound.play();
     });
 
     document.getElementById('prevBtn').addEventListener('click', () => {
-      reviews[current].classList.remove('active');
       current = (current - 1 + reviews.length) % reviews.length;
-      reviews[current].classList.add('active');
+      showReview(current);
+      sound.play();
+    });
+
+    // --- Callback Example ---
+    function randomCallback() {
+      const random = Math.floor(Math.random() * reviews.length);
+      showReview(random);
+      sound.play();
+    }
+
+    document.getElementById('randomBtn').addEventListener('click', () => {
+      randomCallback();
+    });
+
+    // --- Keyboard navigation ---
+    document.addEventListener('keydown', (e) => {
+      switch(e.key) {
+        case 'ArrowRight': 
+          current = (current + 1) % reviews.length; 
+          break;
+        case 'ArrowLeft': 
+          current = (current - 1 + reviews.length) % reviews.length;
+          break;
+        default:
+          return;
+      }
+      showReview(current);
+      sound.play();
     });
   </script>
 
