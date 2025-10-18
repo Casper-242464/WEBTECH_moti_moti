@@ -38,6 +38,12 @@ body {
     flex-direction: column;
 }
 
+.button-row {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 4fr 1fr;
+  gap: 5px;
+}
 /* General styling for all Form inputs */
 .form-grid input {
     width: 100%;
@@ -60,7 +66,8 @@ label {
 }
 
 /* Form Button styling */
-#submit-delivery {
+
+.delivery-buttons {
   background-color: #ffb6c1;
   color: white;
   font-weight: bold;
@@ -73,11 +80,11 @@ label {
   box-shadow: 0 6px #d88d98;
 }
 
-#submit-delivery:hover {
+.delivery-buttons:hover {
   color: black
 }
 
-#submit-delivery:active {
+.delivery-buttons:active {
   background-color: #ffb6c1;
   box-shadow: 0 3px #d88d98;
   transform: translateY(3px);
@@ -150,3 +157,4 @@ label {
     margin-bottom: 5px;
     text-align: center;
 }
+

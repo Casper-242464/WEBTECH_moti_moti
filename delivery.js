@@ -1,3 +1,5 @@
+/* ---------- FORM VALIDATION ---------- */
+
 function validateForm() {
   const rules = [
     { id: 'street',  test: v => v.length >= 3,           msg: 'Enter a valid street (min 3 chars).' },
@@ -42,11 +44,7 @@ function validateForm() {
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('submit-delivery');
   if (!btn) return;
-
   btn.addEventListener('click', (e) => {
-    // If you later wrap the inputs in a <form>, uncomment to prevent native submit:
-    // e.preventDefault();
-
     if (validateForm()) {
       alert('Form is valid — ready to submit.');
     } else {
@@ -54,4 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (firstInvalid) firstInvalid.focus();
     }
   });
+
+  // Reset button handler
+  const resetBtn = document.getElementById('reset-delivery');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      // clear all inputs
+      document.querySelectorAll('input').forEach(input => input.value = '');
+      // remove bootstrap validation classes and feedback text (optional)
+      document.querySelectorAll('.is-invalid, .is-valid').forEach(el => el.classList.remove('is-invalid','is-valid'));
+      document.querySelectorAll('.invalid-feedback').forEach(fb => fb.textContent = '');
+    });
+  }
 });
