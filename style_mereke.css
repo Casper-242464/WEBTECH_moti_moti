@@ -378,3 +378,12 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+/* === Dark Theme Styles === */
+.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+.dark-mode header,
+.dark-mode footer {
+  background-color: #333 !important;
+}

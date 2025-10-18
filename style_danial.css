@@ -67,7 +67,7 @@ label {
 
 /* Form Button styling */
 
-.delivery-buttons {
+.form-buttons {
   background-color: #ffb6c1;
   color: white;
   font-weight: bold;
@@ -153,8 +153,41 @@ label {
 }
 
 .location-details h2 {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-    text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* === Dark theme for delivery page === */
+.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode .sidebar {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+.dark-mode .form-grid,
+.dark-mode #cart,
+.dark-mode .location-details,
+.dark-mode .product-card {
+  background-color: #1e1e1e;
+  color: #eee;
+  border-color: #444;
+}
+
+.dark-mode a {
+  color: #9ad3ff;
+}
+
+.dark-mode .delivery-buttons,
+.dark-mode #clear-cart,
+.dark-mode .btn {
+  background-color: #ffb6c1;
+  color: #fff;
 }
 
