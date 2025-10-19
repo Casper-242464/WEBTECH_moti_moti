@@ -80,11 +80,11 @@ label {
   box-shadow: 0 6px #d88d98;
 }
 
-.delivery-buttons:hover {
+.form-buttons:hover {
   color: black
 }
 
-.delivery-buttons:active {
+.form-buttons:active {
   background-color: #ffb6c1;
   box-shadow: 0 3px #d88d98;
   transform: translateY(3px);
@@ -106,28 +106,6 @@ label {
 #cart-total {
   font-weight: bold;
   color : rgb(255, 255, 255);
-}
-
-#clear-cart {
-    background-color: #ffb6c1;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-    border-radius: 10px;
-    padding: 6px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px #d88d98;
-}
-
-#clear-cart:active {
-    background-color: #ffb6c1;
-    box-shadow: 0 3px #d88d98;
-    transform: translateY(3px);
-}
-
-#clear-cart:hover {
-    color: black
 }
 
 /* --------------- Locations page ---------------  */
@@ -184,10 +162,32 @@ label {
   color: #9ad3ff;
 }
 
-.dark-mode .delivery-buttons,
+.dark-mode .form-buttons,
 .dark-mode #clear-cart,
 .dark-mode .btn {
-  background-color: #ffb6c1;
+  background-color: #4d4d4d;
   color: #fff;
+  box-shadow: 0 3px #333;
 }
 
+.dark-mode .form-grid input {
+  background-color: black;
+  color: white;
+  border-color: #eee;
+}
+
+.dark-mode .form-buttons:active {
+  background-color: #4d4d4d;
+  box-shadow: 0 3px #333;
+  transform: translateY(3px);
+}
+
+.dark-mode label {
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-width: 100%;
+}
