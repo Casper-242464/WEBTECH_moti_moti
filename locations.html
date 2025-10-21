@@ -5,6 +5,7 @@
   <title>Moti-Moti | Desserts</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style_danial.css">
+  <script src="https: /ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="delivery.js" defer></script>
 </head>
 <body>
@@ -41,7 +42,17 @@
           <p id="location-paragraph">Come visit our factory and purchase our luxury sweets straight from the source:</p>
           <hr style="border: 1px solid white; margin-bottom: 20px;">
           <h2>Moti-Moti Branches</h2>
-          <p>LORUM Ipsum Street</p>
+
+          <!-- copy wrapper for the street address -->
+          <div class="copy-wrapper">
+            <p id="location-street" class="m-0">LORUM Ipsum Street</p>
+            <button id="copy-address-btn" class="copy-btn" type="button" aria-label="Copy address">
+              <span class="copy-icon">📋</span>
+              <span class="copy-check" aria-hidden="true">✓</span>
+            </button>
+            <div class="copy-tooltip" aria-hidden="true">Copied to clipboard!</div>
+          </div>
+
           <p>Astana City, Kazakhstan</p>
           <p><strong>Phone:</strong> +777-888-90-90</p>
           <p><strong>Email:</strong> moti-moti@mail.com</p>
