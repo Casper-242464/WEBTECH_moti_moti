@@ -1,171 +1,152 @@
-// show a temporary toast that fades out
-function showToast(message, duration = 3000) {
-  // remove existing toast(s) if present
-  document.querySelectorAll('.temp-toast').forEach(t => t.remove());
-
-  const toast = document.createElement('div');
-  toast.className = 'temp-toast';
-  toast.textContent = message;
-  document.body.appendChild(toast);
-
-  // trigger CSS transition
-  requestAnimationFrame(() => toast.classList.add('show'));
-
-  // hide and remove after duration
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 400); // match CSS transition time
-  }, duration);
+// debug: ensure jQuery loaded
+if (typeof jQuery === 'undefined') {
+  console.error('delivery.js: jQuery is NOT loaded - handlers will not run');
+} else {
+  console.log('delivery.js loaded — jQuery version', jQuery.fn.jquery);
 }
+$(function() {
 
-// ...existing code...
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.innerHTML = btn.dataset.originalHtml;
-      btn.classList.remove('loading');
+  // Toast
+  function showToast(message, duration) {
+    duration = duration || 3000;
+    $('.temp-toast').remove();
+    var $toast = $('<div/>', { 'class': 'temp-toast', text: message }).appendTo('body');
+    // force reflow then show
+    window.requestAnimationFrame(function(){ $toast.addClass('show'); });
+    setTimeout(function(){
+      $toast.removeClass('show');
+      setTimeout(function(){ $toast.remove(); }, 400);
+    }, duration);
+  }
 
-      // success action (use toast instead of alert)
+  // Validation
+  function validateForm() {
+    var rules = [
+      { id: 'street',     test: function(v){ return v.length >= 3; }, msg: 'Enter a valid street (min 3 chars).' },
+      { id: 'entrance',   test: function(v){ return v.length > 0; },  msg: 'Entrance is required.' },
+      { id: 'intercom',   test: function(v){ return v.length > 0; },  msg: 'Intercom is required.' },
+      { id: 'floor',      test: function(v){ return /^\d+$/.test(v); }, msg: 'Floor must be a number.' },
+      { id: 'apartment',  test: function(v){ return /^\d+$/.test(v); }, msg: 'Apartment must be a number.' }
+    ];
+
+    var allValid = true;
+    $.each(rules, function(_, rule){
+      var $el = $('#' + rule.id);
+      if (!$el.length) return;
+      var value = ($el.val() || '').trim();
+      var ok = rule.test(value);
+
+      var $feedback = $el.parent().find('.invalid-feedback');
+      if (!$feedback.length) {
+        $feedback = $('<div/>', { 'class': 'invalid-feedback' }).appendTo($el.parent());
+      }
+
+      if (!ok) {
+        $el.addClass('is-invalid').removeClass('is-valid');
+        $feedback.text(rule.msg);
+        allValid = false;
+      } else {
+        $el.removeClass('is-invalid').addClass('is-valid');
+        $feedback.text('');
+      }
+    });
+
+    return allValid;
+  }
+
+  // Theme toggle (ensure exists first)
+  if (!$('#theme-toggle-delivery').length) {
+    var $themeBtn = $('<button/>', { id: 'theme-toggle-delivery', text: '🌙 Toggle Theme', 'class': 'btn' })
+      .css({ position: 'fixed', bottom: '100px', right: '20px', zIndex: 2147483647, pointerEvents: 'auto' })
+      .appendTo('body')
+      .on('click', function(){
+        $('body').toggleClass('dark-mode');
+        $(this).css('zIndex', 2147483647);
+      });
+  }
+
+  // Submit handler
+  $(document).on('click', '#submit-delivery', function(e){
+    e.preventDefault();
+    var $btn = $(this);
+    if (!validateForm()) {
+      var $first = $('.is-invalid').first();
+      if ($first.length) $first.focus();
+      return;
+    }
+
+    $btn.prop('disabled', true);
+    $btn.data('originalHtml', $btn.html());
+    $btn.html('<span class="spinner" aria-hidden="true"></span> Please wait...');
+    $btn.addClass('loading');
+
+    setTimeout(function(){
+      $btn.prop('disabled', false);
+      $btn.html($btn.data('originalHtml'));
+      $btn.removeClass('loading');
       showToast('Form submitted successfully');
     }, 2000);
-
-/* ---------- FORM VALIDATION ---------- */
-
-function validateForm() {
-  const rules = [
-    { id: 'street',  test: v => v.length >= 3,           msg: 'Enter a valid street (min 3 chars).' },
-    { id: 'entrance',test: v => v.length > 0,            msg: 'Entrance is required.' },
-    { id: 'intercom',test: v => v.length > 0,            msg: 'Intercom is required.' },
-    { id: 'floor',   test: v => /^\d+$/.test(v),         msg: 'Floor must be a number.' },
-    { id: 'apartment',test: v => /^\d+$/.test(v),       msg: 'Apartment must be a number.' },
-  ];
-
-  let allValid = true;
-  rules.forEach(rule => {
-    const el = document.getElementById(rule.id);
-    if (!el) return;
-
-    const value = (el.value || '').trim();
-    const ok = rule.test(value);
-
-    // find or create feedback element
-    let feedback = el.parentNode.querySelector('.invalid-feedback');
-    if (!feedback) {
-      feedback = document.createElement('div');
-      feedback.className = 'invalid-feedback';
-      el.parentNode.appendChild(feedback);
-    }
-
-    if (!ok) {
-      el.classList.add('is-invalid');
-      el.classList.remove('is-valid');
-      feedback.textContent = rule.msg;
-      allValid = false;
-    } else {
-      el.classList.remove('is-invalid');
-      el.classList.add('is-valid');
-      feedback.textContent = '';
-    }
   });
 
-  return allValid;
-}
+  // Reset handler
+  $(document).on('click', '#reset-delivery', function(){
+    $('input').val('');
+    $('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
+    $('.invalid-feedback').text('');
+  });
 
-// wire button
-document.addEventListener('DOMContentLoaded', () => {
+  // Copy address button (locations page)
+  $(document).on('click', '#copy-address-btn', function(){
+    var $btn = $(this);
+    var text = $.trim($('#location-street').text() || '');
+    if (!text) return;
 
-  // 1) Theme toggle — create first so it always exists
-  if (!document.getElementById('theme-toggle-delivery')) {
-    const themeBtn = document.createElement('button');
-    themeBtn.id = 'theme-toggle-delivery';
-    themeBtn.textContent = '🌙 Toggle Theme';
-    themeBtn.className = 'btn';
-    Object.assign(themeBtn.style, {
-      position: 'fixed',
-      bottom: '100px',
-      right: '20px',
-      zIndex: '2147483647',
-      pointerEvents: 'auto'
+    // prefer Clipboard API
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        $btn.addClass('copied');
+        var $tip = $btn.parent().find('.copy-tooltip');
+        if ($tip.length) $tip.addClass('show');
+        $btn.attr('aria-label','Copied');
+        setTimeout(function(){
+          $btn.removeClass('copied');
+          if ($tip.length) $tip.removeClass('show');
+          $btn.attr('aria-label','Copy address');
+        }, 1600);
+      }).catch(function(err){
+        console.error('Clipboard API failed:', err);
+      });
+      return;
+    }
+
+    // fallback: temporary textarea + jQuery .on('copy')
+    var $ta = $('<textarea/>').val(text).css({ position: 'fixed', left: '-9999px' }).appendTo('body');
+    $ta.on('copy', function(e){
+      var ev = e.originalEvent || e;
+      if (ev.clipboardData) {
+        ev.clipboardData.setData('text/plain', text);
+        ev.preventDefault();
+      } else if (window.clipboardData) {
+        window.clipboardData.setData('Text', text);
+        ev.preventDefault();
+      }
     });
-    document.body.appendChild(themeBtn);
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      themeBtn.style.zIndex = '2147483647';
-    });
-  }
-
-  // wrap remaining handlers to prevent one failure stopping everything
-  try {
-    const btn = document.getElementById('submit-delivery');
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!validateForm()) {
-          const firstInvalid = document.querySelector('.is-invalid');
-          if (firstInvalid) firstInvalid.focus();
-          return;
-        }
-        btn.disabled = true;
-        btn.dataset.originalHtml = btn.innerHTML;
-        btn.innerHTML = '<span class="spinner" aria-hidden="true"></span> Please wait...';
-        btn.classList.add('loading');
-
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.innerHTML = btn.dataset.originalHtml;
-          btn.classList.remove('loading');
-          showToast('Form submitted successfully');
-        }, 2000);
-      });
+    $ta.select();
+    try {
+      document.execCommand('copy');
+      $btn.addClass('copied');
+      var $tip2 = $btn.parent().find('.copy-tooltip');
+      if ($tip2.length) $tip2.addClass('show');
+      $btn.attr('aria-label','Copied');
+      setTimeout(function(){
+        $btn.removeClass('copied');
+        if ($tip2.length) $tip2.removeClass('show');
+        $btn.attr('aria-label','Copy address');
+      }, 1600);
+    } catch (err) {
+      console.error('execCommand copy failed:', err);
     }
+    $ta.remove();
+  });
 
-    const resetBtn = document.getElementById('reset-delivery');
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        document.querySelectorAll('input').forEach(input => input.value = '');
-        document.querySelectorAll('.is-invalid, .is-valid').forEach(el => el.classList.remove('is-invalid','is-valid'));
-        document.querySelectorAll('.invalid-feedback').forEach(fb => fb.textContent = '');
-      });
-    }
-
-    // COPY button for locations (no jQuery)
-    const copyBtn = document.getElementById('copy-address-btn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', async () => {
-        const addrEl = document.getElementById('location-street');
-        const text = addrEl ? addrEl.textContent.trim() : '';
-        if (!text) return;
-
-        try {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            await navigator.clipboard.writeText(text);
-          } else {
-            // fallback: temporary textarea + execCommand
-            const ta = document.createElement('textarea');
-            ta.value = text;
-            ta.style.position = 'fixed';
-            ta.style.left = '-9999px';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            ta.remove();
-          }
-
-          copyBtn.classList.add('copied');
-          const tooltip = copyBtn.parentElement.querySelector('.copy-tooltip');
-          if (tooltip) tooltip.classList.add('show');
-          copyBtn.setAttribute('aria-label', 'Copied');
-
-          setTimeout(() => {
-            copyBtn.classList.remove('copied');
-            if (tooltip) tooltip.classList.remove('show');
-            copyBtn.setAttribute('aria-label', 'Copy address');
-          }, 1600);
-        } catch (err) {
-          console.error('Copy failed:', err);
-        }
-      });
-    }
-  } catch (err) {
-    console.error('Handler setup error:', err);
-  }
 });
