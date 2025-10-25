@@ -4,27 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moti-Moti | Gallery</title>
+  <link rel="stylesheet" href="style_zeres.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style_zere.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-  <header>
-    <div class="logo">Moti-Moti</div>
-    <nav>
+ <div class="grid-container">
+    <header>
+      <div class="logo">Moti-Moti</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Main</a></li>        
+          <li><a href="delivery.html">Delivery</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+          <li><a href="locations.html">Locations</a></li>         
+        </ul>
+      </nav>
+    </header>
+
+    <aside class="sidebar">
+      <h2>Categories</h2>
       <ul>
-        <li><a href="index.html">Main</a></li>
         <li><a href="products.html">Products</a></li>
-        <li><a href="delivery.html">Delivery</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="reviews.html">Reviews</a></li>
       </ul>
-    </nav>
-  </header>
-
+    </aside>
   <main>
     <h1 class="page-title">Our Sweet Gallery 🍡</h1>
 
@@ -34,24 +41,25 @@
     </div>
 
     <div class="gallery flexbox">
-      <img src="img/moti-1-1024x576.jpg.avif" alt="moti 1">
-      <img src="img/p_O.jpg.png" alt="moti 2">
-      <img src="img/k88xrnwyn0jk4qba3kv01f1yh5gur910.jpg" alt="moti 3">
-      <img src="img/delicious-sweet-chilled-mochi-desserts-with-fruit-filling-scaled.jpg" alt="moti 4">
-      <img src="img/241_large.jpg" alt="moti 5">
-      <img src="img/65bc9236de95c.jpg" alt="moti 6">
-    </div>
+  <img class="lazy" data-src="img/moti-1-1024x576.jpg.avif" src="img/placeholder.png" alt="moti 1">
+  <img class="lazy" data-src="img/p_O.jpg.png" src="img/placeholder.png" alt="moti 2">
+  <img class="lazy" data-src="img/k88xrnwyn0jk4qba3kv01f1yh5gur910.jpg" src="img/placeholder.png" alt="moti 3">
+  <img class="lazy" data-src="img/images (3).jpeg" src="img/placeholder.png" alt="moti 4">
+  <img class="lazy" data-src="img/241_large.jpg" src="img/placeholder.png" alt="moti 5">
+  <img class="lazy" data-src="img/65bc9236de95c.jpg" src="img/placeholder.png" alt="moti 6">
+</div>
 
-    <!-- Звук при клике -->
+
     <audio id="clickSound" src="click.mp3" preload="auto"></audio>
   </main>
 
   <footer>
     <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
   </footer>
+</div>
 
   <script>
-    // --- Переключение Flex/Grid Layout ---
+    // --- Layout Switcher ---
     const btn = document.querySelector('.toggle-btn');
     const gallery = document.querySelector('.gallery');
     const sound = document.getElementById('clickSound');
@@ -62,38 +70,28 @@
       btn.textContent = gallery.classList.contains('grid')
         ? 'Switch to Flex Layout'
         : 'Switch to Grid Layout';
-
-      sound.play(); // звук при клике
+      sound.play();
     });
 
-    // --- Переключатель темы (Day/Night) ---
+    // --- Theme Switcher ---
     const themeBtn = document.getElementById('themeBtn');
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('night');
       sound.play();
-
-      // сообщение по времени (switch)
-      const hour = new Date().getHours();
-      let message = '';
-      switch (true) {
-        case (hour < 12): message = 'Good Morning! 🌞'; break;
-        case (hour < 18): message = 'Good Afternoon! 🍡'; break;
-        default: message = 'Good Evening! 🌙';
-      }
-      alert(message);
     });
 
-    // --- Hover-анимация ---
-    const images = document.querySelectorAll('.gallery img');
-    images.forEach(img => {
-      img.addEventListener('mouseenter', () => {
-        img.style.transform = 'scale(1.1)';
-        img.style.transition = 'transform 0.3s';
+    // --- Lazy Loading using jQuery ---
+    $(window).on("scroll", function() {
+      $(".lazy").each(function() {
+        const imgTop = $(this).offset().top;
+        const windowBottom = $(window).scrollTop() + $(window).height();
+        if (imgTop < windowBottom - 50 && $(this).attr("data-src")) {
+          $(this).attr("src", $(this).attr("data-src"));
+          $(this).removeAttr("data-src").addClass("loaded");
+        }
       });
-      img.addEventListener('mouseleave', () => {
-        img.style.transform = 'scale(1)';
-      });
-    });
+    }).trigger("scroll");
   </script>
+
 </body>
 </html>

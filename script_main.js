@@ -1,15 +1,50 @@
-// script.js
-// Реализует: плавный аккордеон (клик/клавиатура) и анимацию появления при скролле
+$(document).ready(function () {
+  console.log("jQuery is ready!");
+
+  // === Task 3: Search Highlighting ===
+  function highlightText($element, keyword) {
+    const text = $element.text();
+    if (!keyword) {
+      $element.html(text);
+      return;
+    }
+    const regex = new RegExp(`(${keyword})`, 'gi');
+    const newHtml = text.replace(regex, '<mark>$1</mark>');
+    $element.html(newHtml);
+  }
+
+  $('#search-input').on('input', function () {
+    const searchText = $(this).val().trim();
+    $('.searchable').each(function () {
+      const $el = $(this);
+      const txt = $el.text().toLowerCase();
+      if (txt.includes(searchText.toLowerCase())) {
+        $el.show();
+        highlightText($el, searchText);
+      } else {
+        $el.hide();
+      }
+    });
+  });
+
+  // === Task 4: Scroll Progress Bar ===
+  $(window).on('scroll', function () {
+    const scrollTop = $(window).scrollTop();
+    const height = $(document).height() - $(window).height();
+    const scrolled = (scrollTop / height) * 100;
+    $('.progress-bar').css('width', scrolled + '%');
+  });
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ---------- Accordion: клик и клавиатура ----------
+
   const questions = Array.from(document.querySelectorAll('.accordion-question'));
 
   questions.forEach(q => {
-    // Открытие/закрытие по клику
+   
     q.addEventListener('click', () => toggleAnswer(q));
 
-    // Открытие/закрытие по Enter или Space (доступность)
     q.addEventListener('keydown', (evt) => {
       if (evt.key === 'Enter' || evt.key === ' ') {
         evt.preventDefault();
@@ -24,12 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isOpen = answerEl.classList.contains('open');
 
-    // Закрыть все остальные ответы
+
     document.querySelectorAll('.accordion-answer.open').forEach(a => {
       if (a !== answerEl) closeAnswer(a);
     });
 
-    // Переключить текущий
+   
     if (isOpen) {
       closeAnswer(answerEl);
       questionEl.setAttribute('aria-expanded', 'false');
@@ -43,22 +78,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openAnswer(a) {
     a.classList.add('open');
-    // задаём точную высоту для плавного раскрытия
+
     const height = a.scrollHeight;
     a.style.maxHeight = height + 'px';
   }
 
   function closeAnswer(a) {
-    // чтобы анимация сработала, сначала сбрасываем высоту, затем удаляем класс
-    a.style.maxHeight = a.scrollHeight + 'px'; // ставим текущее значение, чтобы transition сработал
-    // forced reflow для гарантии (чтобы браузер применил стиль)
-    // eslint-disable-next-line no-unused-expressions
+    
+    a.style.maxHeight = a.scrollHeight + 'px'; 
+
     a.offsetHeight;
     a.style.maxHeight = '0px';
     a.classList.remove('open');
   }
 
-  // ---------- IntersectionObserver: появление при скролле ----------
   const observerOptions = {
     root: null,
     rootMargin: '0px',
@@ -69,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        obs.unobserve(entry.target); // один раз — больше не наблюдаем
+        obs.unobserve(entry.target); 
       }
     });
   }, observerOptions);
@@ -78,8 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ABOUT //
-// ===== Анимация появления карточек =====
 window.addEventListener("load", () => {
   const cards = document.querySelectorAll(".team-card");
   cards.forEach((card, index) => {
@@ -111,7 +142,7 @@ cards.forEach(card => {
   const dragEnd = () => {
     active = false;
     card.style.transition = "transform 0.3s ease";
-    // плавно возвращаем на место
+   
     xOffset = 0;
     yOffset = 0;
     setTranslate(0, 0);
@@ -124,12 +155,12 @@ cards.forEach(card => {
     setTranslate(xOffset, yOffset);
   };
 
-  // мышь
+
   card.addEventListener("mousedown", (e) => dragStart(e.clientX, e.clientY));
   document.addEventListener("mouseup", dragEnd);
   document.addEventListener("mousemove", (e) => drag(e.clientX, e.clientY));
 
-  // сенсор (телефоны)
+
   card.addEventListener("touchstart", (e) => {
     const touch = e.touches[0];
     dragStart(touch.clientX, touch.clientY);
@@ -141,18 +172,18 @@ cards.forEach(card => {
   });
 });
 
-// Main interactive features for Assignment 5
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme toggle
+
   const themeBtn = document.getElementById('theme-toggle');
   if (themeBtn) {
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('theme-dark');
-      // store preference
+    
       localStorage.setItem('theme-dark', document.body.classList.contains('theme-dark'));
       playClick();
     });
-    // restore
+ 
     if (localStorage.getItem('theme-dark') === 'true') {
       document.body.classList.add('theme-dark');
     }
@@ -169,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Keyboard navigation for nav menu (left/right arrows)
+ 
   const nav = document.getElementById('main-nav');
   if (nav) {
     const links = Array.from(nav.querySelectorAll('a'));
@@ -188,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Render team on about.html
   const teamContainer = document.getElementById('team-container');
   if (teamContainer) {
     const team = [
@@ -214,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ];
 
-    // clear container then render
+
     teamContainer.innerHTML = '';
     team.forEach(member => {
       const card = document.createElement('article');
@@ -226,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="team-desc">${member.desc}</div>
         </div>
       `;
-      // lazy image error fallback
+     
       const img = card.querySelector('img');
       img.addEventListener('error', () => {
         img.src = 'img/placeholder.png';
@@ -235,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // small helper sounds using WebAudio API
+
   function playClick() {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -251,10 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) { /* ignore on unsupported */ }
   }
 
-  // simple animation helper
+  
   function animateFlash(el) {
     el.style.transition = 'transform .18s ease';
     el.style.transform = 'scale(1.04)';
     setTimeout(() => el.style.transform = '', 220);
   }
 });
+

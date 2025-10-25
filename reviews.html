@@ -4,28 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moti-Moti | Reviews</title>
+    <link rel="stylesheet" href="style_zeres.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style_zere.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-  <header>
-    <div class="logo">Moti-Moti</div>
-    <nav>
+  <div class="grid-container">
+    <header>
+      <div class="logo">Moti-Moti</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Main</a></li>        
+          <li><a href="delivery.html">Delivery</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+          <li><a href="locations.html">Locations</a></li>         
+        </ul>
+      </nav>
+    </header>
+
+    <aside class="sidebar">
+      <h2>Categories</h2>
       <ul>
-        <li><a href="index.html">Main</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="delivery.html">Delivery</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="reviews.html" class="active">Reviews</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
       </ul>
-    </nav>
-  </header>
+    </aside>
 
   <main>
+    <!-- Animated Counter Section -->
+    <section class="review-stats">
+      <div class="counter" data-count="1200">0</div>
+      <p>Happy Customers</p>
+      <div class="counter" data-count="3500">0</div>
+      <p>Orders Delivered</p>
+    </section>
+
     <div class="reviews">
       <h2>Customer Reviews 💬</h2>
 
@@ -60,8 +76,9 @@
   <footer>
     <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
   </footer>
-
-  <script defer>
+</div>
+  <script>
+    // --- Review Switch ---
     const reviews = document.querySelectorAll('.review');
     const sound = document.getElementById('clickSound');
     let current = 0;
@@ -71,45 +88,43 @@
       reviews[index].classList.add('active');
     }
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
+    $('#nextBtn').click(() => {
       current = (current + 1) % reviews.length;
       showReview(current);
       sound.play();
     });
 
-    document.getElementById('prevBtn').addEventListener('click', () => {
+    $('#prevBtn').click(() => {
       current = (current - 1 + reviews.length) % reviews.length;
       showReview(current);
       sound.play();
     });
 
-    // --- Callback Example ---
-    function randomCallback() {
+    $('#randomBtn').click(() => {
       const random = Math.floor(Math.random() * reviews.length);
       showReview(random);
       sound.play();
-    }
-
-    document.getElementById('randomBtn').addEventListener('click', () => {
-      randomCallback();
     });
 
-    // --- Keyboard navigation ---
-    document.addEventListener('keydown', (e) => {
-      switch(e.key) {
-        case 'ArrowRight': 
-          current = (current + 1) % reviews.length; 
-          break;
-        case 'ArrowLeft': 
-          current = (current - 1 + reviews.length) % reviews.length;
-          break;
-        default:
-          return;
-      }
-      showReview(current);
-      sound.play();
+    // --- Counter Animation with jQuery ---
+    $(document).ready(function(){
+      $('.counter').each(function(){
+        const $this = $(this);
+        const countTo = $this.attr('data-count');
+        $({ countNum: $this.text() }).animate({
+          countNum: countTo
+        }, {
+          duration: 2000,
+          easing: 'linear',
+          step: function() {
+            $this.text(Math.floor(this.countNum));
+          },
+          complete: function() {
+            $this.text(this.countNum + "+");
+          }
+        });
+      });
     });
   </script>
-
 </body>
 </html>

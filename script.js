@@ -107,3 +107,63 @@ document.addEventListener('keydown', e => {
       break;
   }
 });
+
+// === Unified Search: Real-time Filter + Autocomplete ===
+const searchBar = document.getElementById('searchBar');
+const suggestionsBox = document.getElementById('suggestions');
+
+if (searchBar && suggestionsBox) {
+  // Get all product names from the page
+  const products = Array.from(document.querySelectorAll('.product-title')).map(el => el.textContent);
+
+  searchBar.addEventListener('input', () => {
+    const term = searchBar.value.toLowerCase().trim();
+    suggestionsBox.innerHTML = '';
+
+    // Filter visible cards (real-time filtering)
+    document.querySelectorAll('.product-card').forEach(card => {
+      const title = card.querySelector('.product-title').textContent.toLowerCase();
+      card.style.display = title.includes(term) ? 'flex' : 'none';
+    });
+
+    // Autocomplete suggestions
+    if (term.length === 0) {
+      suggestionsBox.style.display = 'none';
+      document.querySelectorAll('.product-card').forEach(card => card.style.display = 'flex');
+      return;
+    }
+
+    const matches = products.filter(p => p.toLowerCase().includes(term));
+    if (matches.length > 0) {
+      matches.forEach(match => {
+        const li = document.createElement('li');
+        li.textContent = match;
+        li.style.padding = '10px';
+        li.style.cursor = 'pointer';
+        li.addEventListener('click', () => {
+          searchBar.value = match;
+          suggestionsBox.style.display = 'none';
+
+          // Filter to exact match
+          document.querySelectorAll('.product-card').forEach(card => {
+            const title = card.querySelector('.product-title').textContent.toLowerCase();
+            card.style.display = title === match.toLowerCase() ? 'flex' : 'none';
+          });
+        });
+        li.addEventListener('mouseenter', () => li.style.background = '#ffe4e1');
+        li.addEventListener('mouseleave', () => li.style.background = 'transparent');
+        suggestionsBox.appendChild(li);
+      });
+      suggestionsBox.style.display = 'block';
+    } else {
+      suggestionsBox.style.display = 'none';
+    }
+  });
+
+  // Hide suggestions when clicking outside
+  document.addEventListener('click', e => {
+    if (!suggestionsBox.contains(e.target) && e.target !== searchBar) {
+      suggestionsBox.style.display = 'none';
+    }
+  });
+}
