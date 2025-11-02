@@ -24,7 +24,7 @@ html, body {
   /*-----GENERAL PAGE LAYOUT-----*/
   .layout_container {
     display: grid;
-    min-height: 100%;
+    min-height: 100vh;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     grid-auto-rows: 1fr;
@@ -141,6 +141,7 @@ html, body {
   .sidebar {
     background: #ffe4e1;
     padding: 20px;
+    min-height: 100%;
   }
   .sidebar h2 {
     margin-bottom: 10px;
@@ -159,10 +160,6 @@ html, body {
   }
   .sidebar a:hover {
     color: #d6336c;
-  }
-  /* --- FOOTER --- */
-  footer {
-    width: 100vw;
   }
 }
 
