@@ -16,7 +16,7 @@
 <script src="delivery.js" defer></script>
 
 <div class="layout_container">
-  <!----------HEADER---------->
+  <!----------HEADER--------->
   <header>
     <!-----MOBILE ONLY DROPDOWN MENU----->
     <div class="topnav">
@@ -26,7 +26,7 @@
         <a href="index.html">Main</a>
         <a href="products.html">Products</a>
         <a href="gallery.html">Gallery</a>
-        <a href="delivery.html">Delivery</a>
+        <a href="delivery.html">Cart</a>
         <a href="contact.html">Contacts</a>
         <a href="locations.html">Locations</a>
         <a href="about.html">About Us</a>
@@ -37,11 +37,12 @@
       </a>
     </div>
     <!-----TABLET AND LAPTOP MENU----->
+
     <div id="logo" class="generalLayout">Moti-Moti</div>
     <nav class="generalLayout">
       <ul>
         <li><a href="index.html">Main</a></li>
-        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="delivery.html">Cart</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contacts.html">Contacts</a></li>
         <li><a href="locations.html">Locations</a></li>
@@ -60,54 +61,56 @@
     </aside>
   </div>
 
-  <!----------MAIN---------->
+  <!----------MAIN--------->
   <main>
-    <!-- Delivery information -->
+    <!-- Информация для доставки -->
     <div class="form-grid">
       <div class="grid-item">
-        <label for="street">Street:</label>
-        <input type="text" id="street" placeholder="Your Adress">
+        <label for="street">Улица:</label>
+        <input type="text" id="street" placeholder="Ваш адрес">
       </div>
       <div class="grid-two-column">
         <div class="grid-item">
-          <label for="entrance">Entrance:</label>
-          <input type="text" id="entrance" placeholder="Entrance">
+          <label for="entrance">Подъезд:</label>
+          <input type="text" id="entrance" placeholder="Подъезд">
         </div>
         <div class="grid-item">
-          <label for="intercom">Intercom:</label>
-          <input type="text" id="intercom" placeholder="Intercom">
+          <label for="intercom">Домофон:</label>
+          <input type="text" id="intercom" placeholder="Домофон">
         </div>
         <div class="grid-item">
-          <label for="floor">Floor:</label>
-          <input type="text" id="floor" placeholder="Floor Number">
+          <label for="floor">Этаж:</label>
+          <input type="text" id="floor" placeholder="Номер этажа">
         </div>
         <div class="grid-item">
-          <label for="apartment">Apartment:</label>
-          <input type="text" id="apartment" placeholder="Apartment Number">
+          <label for="apartment">Квартира:</label>
+          <input type="text" id="apartment" placeholder="Номер квартиры">
         </div>
       </div>
       <div class="grid-item">
-        <label for="comment">Comment for courier:</label>
-        <input type="text" id="comment" placeholder="Your comments">
+        <label for="comment">Комментарий курьеру:</label>
+        <input type="text" id="comment" placeholder="Ваши комментарии">
       </div>
       <div class="button-row">
-        <button class="form-buttons" id="submit-delivery" type="button">Deliver!</button>
-        <button class="form-buttons" id="reset-delivery" type="button">Reset</button>
+        <button class="form-buttons" id="submit-delivery" type="button">Купить</button>
+        <button class="form-buttons" id="reset-delivery" type="button">Сбросить</button>
       </div>
     </div>
 
-    <!-- Shopping cart -->
-
-    <div id="cart">
-      <ul id="cart-items">
-        <!-- Cart items will be added here by JavaScript -->
-      </ul>
-      <p id="cart-total">Total: $<span id="cart-total">0.00</span></p>
-      <button class="form-buttons" id="clear-cart">Clear Cart</button>
-    </div>
+    <!-- Корзина -->
+    <section id="cart-section" aria-labelledby="cart-title">
+      <h2 id="cart-title">Корзина</h2>
+      <div id="cart">
+        <ul id="cart-items">
+          <!-- Элементы корзины добавляются здесь через JavaScript -->
+        </ul>
+        <p id="cart-total">Итого: <span id="cart-total-value">0.00</span>₸</p>
+        <button class="form-buttons" id="clear-cart" type="button">Очистить корзину</button>
+      </div>
+    </section>
   </main>
 
-  <!----------FOOTER---------->
+  <!----------FOOTER--------->
   <footer>
     <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
   </footer>

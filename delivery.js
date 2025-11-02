@@ -138,4 +138,93 @@ $(function() {
     $ta.remove();
   });
 
+// --- Отправка данных на сервер + Telegram ---
+$(document).on('click', '#submit-delivery', async function () {
+  if (!validateForm || !validateForm()) {
+    console.warn("Form validation failed");
+    return;
+  }
+
+  const orderData = {
+    street: $('#street').val(),
+    entrance: $('#entrance').val(),
+    intercom: $('#intercom').val(),
+    floor: $('#floor').val(),
+    apartment: $('#apartment').val(),
+    comment: $('#comment').val(),
+    cart: JSON.parse(localStorage.getItem('cart')) || []
+  };
+
+  try {
+    const response = await fetch('/submit_order', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(orderData)
+    });
+
+    if (!response.ok) throw new Error('Server error');
+    const result = await response.json();
+    showToast('✅ Order sent successfully!', 3000);
+    console.log('Server response:', result);
+
+    // Очистить корзину после отправки
+    localStorage.removeItem('cart');
+    loadCart();
+  } catch (err) {
+    console.error('Ошибка при отправке заказа:', err);
+    showToast('❌ Failed to send order!', 3000);
+  }
+});
+
+
+
+function loadCart() {
+      const cartList = $('#cart-items');
+      const totalElement = $('#cart-total');
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let total = 0;
+      cartList.empty();
+
+      cart.forEach(item => {
+        cartList.append(`<li>${item.title} — ${item.price} тг</li>`);
+        total += item.price;
+      });
+
+      totalElement.text(total.toLocaleString());
+  }
+
+  $('#clear-cart').click(function(){
+      localStorage.removeItem('cart');
+      loadCart();
+  });
+
+  $('#submit-delivery').click(function(){
+      const orderData = {
+        street: $('#street').val(),
+        entrance: $('#entrance').val(),
+        intercom: $('#intercom').val(),
+        floor: $('#floor').val(),
+        apartment: $('#apartment').val(),
+        comment: $('#comment').val(),
+        cart: JSON.parse(localStorage.getItem('cart')) || []
+      };
+
+      $.ajax({
+          url: 'http://127.0.0.1:5000/submit_order',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(orderData),
+          success: function(res){
+              alert(res.message);
+              localStorage.removeItem('cart');
+              loadCart();
+          },
+          error: function(err){
+              console.error(err);
+              alert('Ошибка при отправке заказа');
+          }
+      });
+  });
+
+  loadCart();
 });

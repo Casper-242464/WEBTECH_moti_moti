@@ -178,3 +178,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cards.forEach(card => observer.observe(card));
 });
+
+// === 7. Корзина (localStorage) ===
+
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+
+      // Находим карточку продукта
+      const productCard = button.closest('.product-card');
+      const title = productCard.querySelector('.product-title').textContent;
+      const priceText = productCard.querySelector('.product-price').textContent;
+      
+      // Извлекаем только число из цены (например "1 500 тг" -> 1500)
+      const price = parseInt(priceText.replace(/[^\d]/g, ''));
+
+      // Создаем объект товара
+      const product = { title, price };
+
+      // Загружаем корзину из localStorage или создаем новую
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Добавляем товар
+      cart.push(product);
+
+      // Сохраняем обратно в localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${title} добавлен(а) в корзину!`);
+    });
+  });
