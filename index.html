@@ -1,30 +1,30 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="ru">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moti-Moti | Desserts</title>
+
+
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="page_layout.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <!-- Bootstrap removed completely -->
 </head>
 
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
-<script src="general.js" defer></script>
-<script src="script_main.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+  <script src="general.js" defer></script>
+  <script src="script_main.js" defer></script>
 
   <div class="layout_container">
-    <!----------HEADER---------->
+    <!-- HEADER -->
     <header>
-      <!-----MOBILE ONLY DROPDOWN MENU----->
       <div class="topnav">
         <a href="index.html" class="active">Moti-Moti</a>
-        <!-- Navigation links (hidden by default) -->
-        <div id="myLinks" class="menuGrid">
+
+        <div id="myLinks" class="menuGrid" aria-hidden="true">
           <a href="index.html">Main</a>
           <a href="products.html">Products</a>
           <a href="gallery.html">Gallery</a>
@@ -33,14 +33,15 @@
           <a href="locations.html">Locations</a>
           <a href="about.html">About Us</a>
         </div>
-        <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-        <a href="javascript:void(0);" class="icon" onclick="navDropDown()">
+
+        <a href="javascript:void(0);" class="icon" onclick="navDropDown()" aria-label="menu">
           <i class="fa fa-bars"></i>
         </a>
       </div>
-      <!-----TABLET AND LAPTOP MENU----->
+
       <div id="logo" class="generalLayout">Moti-Moti</div>
-      <nav class="generalLayout">
+
+      <nav class="generalLayout" id="main-nav" role="navigation" aria-label="Main">
         <ul>
           <li><a href="index.html">Main</a></li>
           <li><a href="delivery.html">Delivery</a></li>
@@ -50,117 +51,120 @@
         </ul>
       </nav>
     </header>
-    <!----------SIDEBAR---------->
+
+    <!-- SIDEBAR -->
     <div id="sidebar" class="generalLayout">
       <aside class="sidebar">
         <h2>Categories</h2>
-          <ul>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-          </ul>
+        <ul>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+        </ul>
       </aside>
     </div>
 
-    <!----------MAIN---------->
- 
+    <!-- MAIN -->
+    <main class="content">
+      <div class="progress-container"><div class="progress-bar"></div></div>
 
- <main class="content">
-    <div class="progress-container"><div class="progress-bar"></div></div>
-    <div class="search-box">
-      <input type="text" id="search-input" placeholder="Search on page...">
-    </div>
-
-    <section class="text-center p-4 bg-light rounded-4 shadow-sm mb-4 searchable">
-      <h1 class="fw-bold mb-3">Добро пожаловать в Moti-Moti!</h1>
-      <p class="lead mb-4">Онлайн-магазин десертов: вкусно, сладко и с любовью 💖</p>
-      <a href="products.html" class="btn btn-primary btn-lg">Смотреть товары</a>
-    </section>
-
-    <div id="dessertCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
-      <div class="carousel-inner rounded-4 shadow-sm">
-        <div class="carousel-item active">
-          <img src="img/moti-1-1024x576.jpg.avif" class="d-block w-100 carousel-img" alt="Dessert 1">
-        </div>
-        <div class="carousel-item">
-          <img src="img/images (2).jpeg" class="d-block w-100 carousel-img" alt="Dessert 2">
-        </div>
-        <div class="carousel-item">
-          <img src="img/ice-mochi2.jpg" class="d-block w-100 carousel-img" alt="Dessert 3">
-        </div>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search on page...">
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#dessertCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#dessertCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
 
-    <section class="mb-5 searchable">
-      <h2 class="text-center mb-4">Our Desserts</h2>
-      <div class="row g-4">
-        <div class="col-sm-6 col-lg-4">
-          <div class="card h-100 text-center shadow-sm">
-            <img src="img/Без названия (6).jpeg" class="card-img-top fixed-img" alt="Strawberry Mochi">
+      <!-- Welcome -->
+      <section class="welcome-section searchable">
+        <h1>Добро пожаловать в Moti-Moti!</h1>
+        <p>Онлайн-магазин десертов: вкусно, сладко и с любовью 💖</p>
+        <a href="products.html" class="btn-primary">Смотреть товары</a>
+      </section>
+
+      <!-- Carousel (custom, no Bootstrap) -->
+      <div class="carousel" id="mainCarousel" aria-roledescription="carousel">
+        <div class="carousel-inner" id="carouselInner">
+          <img src="img/moti-1-1024x576.jpg.avif" class="carousel-img" alt="Dessert 1">
+          <img src="img/k88xrnwyn0jk4qba3kv01f1yh5gur910.jpg" class="carousel-img" alt="Dessert 2">
+          <img src="img/241_large.jpg" class="carousel-img" alt="Dessert 3">
+        </div>
+
+        <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous slide">❮</button>
+        <button class="carousel-btn next" id="carouselNext" aria-label="Next slide">❯</button>
+      </div>
+
+      <!-- Products -->
+      <section class="products-section searchable">
+        <h2>Our Desserts</h2>
+
+        <div class="row products-grid">
+   
+          <article class="card product-card">
+            <img src="img/Без названия (6).jpeg" alt="Strawberry Mochi">
             <div class="card-body">
               <h5 class="card-title">Strawberry Mochi</h5>
               <p class="card-text">Sweet and fruity delight 🍓</p>
-              <button class="btn btn-outline-danger btn-sm">Buy</button>
+              <a href="products.html#strawberry">
+              <button class="btn">Buy</button></a>
+          
             </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card h-100 text-center shadow-sm">
-            <img src="img/images (2).jpeg" class="card-img-top fixed-img" alt="Matcha Cake">
+          </article>
+
+          <article class="card product-card">
+            <img src="img/images (2).jpeg" alt="Matcha Cake">
             <div class="card-body">
               <h5 class="card-title">Matcha Cake</h5>
               <p class="card-text">Нежный бисквит с кремом из матча и белого шоколада.</p>
-              <button class="btn btn-outline-success btn-sm">Buy</button>
+               <a href="products.html">
+              <button class="btn">Buy</button></a>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card h-100 text-center shadow-sm">
-            <img src="img/ice-mochi2.jpg" class="card-img-top fixed-img" alt="Ice Mochi">
+          </article>
+
+          <article class="card product-card">
+            <img src="img/ice-mochi2.jpg" alt="Ice Mochi">
             <div class="card-body">
               <h5 class="card-title">Ice Mochi</h5>
               <p class="card-text">Refreshing taste ❄️</p>
-              <button class="btn btn-outline-primary btn-sm">Buy</button>
+                     <a href="products.html">
+              <button class="btn">Buy</button></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FAQ / Accordion -->
+      <section id="faq" class="searchable">
+        <h3>FAQ</h3>
+
+        <div class="accordion">
+          <div class="accordion-item fade-in">
+            <h3 class="accordion-question" role="button" aria-expanded="false" tabindex="0">🍰 How to order?</h3>
+            <div class="accordion-answer content" aria-hidden="true">
+              Just choose your favorite dessert and click “Buy”.
+            </div>
+          </div>
+
+          <div class="accordion-item fade-in">
+            <h3 class="accordion-question" role="button" aria-expanded="false" tabindex="0">🚚 How fast is delivery?</h3>
+            <div class="accordion-answer content" aria-hidden="true">
+              Usually within 1–2 days depending on your location.
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
+    <pre>
 
-    <section id="faq" class="mb-5 searchable">
-      <h3 class="text-center mb-4">FAQ</h3>
-      <div class="accordion w-75 mx-auto">
-        <div class="accordion-item mb-3 fade-in">
-          <h5 class="accordion-question bg-light p-3 rounded shadow-sm" role="button" aria-expanded="false" tabindex="0">
-            🍰 How to order?
-          </h5>
-          <div class="accordion-answer p-3" aria-hidden="true">
-            Just choose your favorite dessert and click “Buy”.
-          </div>
-        </div>
-        <div class="accordion-item mb-3 fade-in">
-          <h5 class="accordion-question bg-light p-3 rounded shadow-sm" role="button" aria-expanded="false" tabindex="0">
-            🚚 How fast is delivery?
-          </h5>
-          <div class="accordion-answer p-3" aria-hidden="true">
-            Usually within 1–2 days depending on your location.
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
 
-    <!----------FOOTER---------->
+
+
+    </pre>
+
+    <!-- FOOTER -->
     <footer>
-        <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
+      <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
     </footer>
   </div>
-</body>
 
+  <!-- Minimal carousel JS (works without Bootstrap) -->
+  
+</body>
 </html>

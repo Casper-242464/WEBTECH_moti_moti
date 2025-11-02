@@ -1,69 +1,6 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fff8f5;
-  color: #333;
-}
-
-/* ---------------- About Section ---------------- */
-.about-section {
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.team-photo {
-  margin: 30px 0;
-}
-
-.photo-placeholder {
-  width: 300px;
-  height: 200px;
-  margin: 0 auto;
-  background: #ffe4e1;
-  border: 2px dashed #ff69b4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #555;
-}
-
-.about-text {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-
-/* ---------------- Hero ---------------- */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: #ffe4e1;
-}
-
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #ff69b4;
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #ff1493;
-}
 
 /* ---------------- Delivery Page ---------------- */
-.form-grid {
+/* .form-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 5px;
@@ -83,7 +20,7 @@ body {
 .grid-item {
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* General styling for all Form inputs */
 .form-grid input {
@@ -172,16 +109,6 @@ label {
 }
 
 /* ---------------- Footer ---------------- */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #ffb6c1;
-  color: #fff;
-  margin-top: 30px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
 
 /* ---------------- Products Grid ---------------- */
 .products-grid {
@@ -349,7 +276,158 @@ footer {
   background-color: #121212;
   color: #f5f5f5;
 }
-.dark-mode header,
-.dark-mode footer {
-  background-color: #333 !important;
+
+
+.dark-mode .product-title .product-desc{
+  color: #f5f5f5;
+}.dark-mode .product-desc{
+  color: #f5f5f5;
+}
+.dark-mode .product-price{
+  color: #34f14e;
+}
+.dark-mode .product-card{
+  background-color: #777777;
+
+  
+  /* border: #555555 1.5px solid; */
+}
+
+/* === CONTACTS PAGE === */
+.contacts-page {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.center h1 {
+  font-size: 2.3rem;
+  color: #ff1493;
+  margin-bottom: 8px;
+}
+
+.center .muted {
+  color: #666;
+  font-size: 1.05rem;
+}
+
+/* Сетка карточек */
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  justify-content: center;
+}
+
+/* Карточка */
+.contact-card {
+  background: linear-gradient(180deg, #fff, #fff0f5);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(255, 105, 180, 0.15);
+  padding: 25px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(255, 105, 180, 0.25);
+}
+
+/* Имя и должность */
+.contact-card h2 {
+  color: #333;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.role {
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Соцсети */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  background: linear-gradient(90deg, #ff69b4, #ff1493);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.social-links a:hover {
+  background: #ff1493;
+  transform: translateY(-2px);
+}
+
+/* Анимация появления */
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === DARK MODE === */
+body.theme-dark {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.theme-dark .contact-card {
+  background: linear-gradient(180deg, #2b2b2b, #232323);
+  box-shadow: 0 6px 16px rgba(255, 105, 180, 0.25);
+}
+
+body.theme-dark .contact-card h2 {
+  color: #fff;
+}
+
+body.theme-dark .role {
+  color: #ccc;
+}
+
+body.theme-dark .social-links a {
+  background: linear-gradient(90deg, #ff5ea1, #ff1493);
+}
+
+body.theme-dark .social-links a:hover {
+  background: #ff85c1;
+}
+
+body.theme-dark .center h1 {
+  color: #ff85c1;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+  .center h1 {
+    font-size: 1.8rem;
+  }
+
+  .social-links a {
+    padding: 7px 12px;
+    font-size: 0.85rem;
+  }
 }

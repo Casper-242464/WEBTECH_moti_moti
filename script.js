@@ -22,18 +22,18 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
 });
 
 // === 2. Переключатель темы ===
-const themeBtn = document.createElement('button');
-themeBtn.textContent = '🌙 Toggle Theme';
-themeBtn.className = 'btn';
-themeBtn.style.position = 'fixed';
-themeBtn.style.bottom = '100px';
-themeBtn.style.right = '20px';
-themeBtn.style.zIndex = '999';
-document.body.appendChild(themeBtn);
+// const themeBtn = document.createElement('button');
+// themeBtn.textContent = '🌙 Toggle Theme';
+// themeBtn.className = 'btn';
+// themeBtn.style.position = 'fixed';
+// themeBtn.style.bottom = '100px';
+// themeBtn.style.right = '20px';
+// themeBtn.style.zIndex = '999';
+// document.body.appendChild(themeBtn);
 
-themeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});
+// themeBtn.addEventListener('click', () => {
+//   document.body.classList.toggle('dark-mode');
+// });
 
 // === 3. Показ времени ===
 const timeBtn = document.createElement('button');
@@ -167,3 +167,14 @@ if (searchBar && suggestionsBox) {
     }
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".fade-in");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+});

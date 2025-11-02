@@ -186,7 +186,9 @@ html, body {
 
 body {
   background: var(--bg);
+  
   color: var(--text);
+
 }
 
 /* when .dark-mode is present, swap variables */
@@ -446,3 +448,17 @@ body {
   background: #272727;
 }
 
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ff69b4;
+  color: #fff;
+  border-radius: 8px;
+  border:solid silver;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff1493;
+}

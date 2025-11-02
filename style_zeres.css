@@ -1,11 +1,5 @@
 /* --- General Styles --- */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fff0f5;
-  color: #333;
-  transition: background 0.5s, color 0.5s;
-}
+
 
 /* Night Mode */
 body.night {
