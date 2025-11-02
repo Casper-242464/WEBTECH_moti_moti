@@ -1,66 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="">
+
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Moti-Moti | Desserts</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="page_layout.css">
   <link rel="stylesheet" href="style_danial.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="delivery.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+<script src="general.js" defer></script>
+<script src="delivery.js" defer></script>
 
-  <div class="grid-container">
-    <!-- Header -->
-    <header>
-      <div class="logo">Moti-Moti</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Main</a></li>        
-          <li><a href="delivery.html">Delivery</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contacts.html">Contacts</a></li>
-          <li><a href="locations.html">Locations</a></li>          
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Sidebar -->
+<div class="layout_container">
+  <!----------HEADER---------->
+  <header>
+    <!-----MOBILE ONLY DROPDOWN MENU----->
+    <div class="topnav">
+      <a href="index.html" class="active">Moti-Moti</a>
+      <!-- Navigation links (hidden by default) -->
+      <div id="myLinks" class="menuGrid">
+        <a href="index.html">Main</a>
+        <a href="products.html">Products</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="contact.html">Contacts</a>
+        <a href="locations.html">Locations</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+      <a href="javascript:void(0);" class="icon" onclick="navDropDown()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    <!-----TABLET AND LAPTOP MENU----->
+    <div id="logo" class="generalLayout">Moti-Moti</div>
+    <nav class="generalLayout">
+      <ul>
+        <li><a href="index.html">Main</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li><a href="locations.html">Locations</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!----------SIDEBAR---------->
+  <div id="sidebar" class="generalLayout">
     <aside class="sidebar">
       <h2>Categories</h2>
       <ul>
-         <li><a href="products.html">Products</a></li>
-       <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="reviews.html">Reviews</a></li>
-      
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
       </ul>
     </aside>
+  </div>
+
+  <!----------MAIN---------->
   <main>
-
     <!-- Delivery information -->
-
     <div class="form-grid">
-      <div class="grid-item">  
+      <div class="grid-item">
         <label for="street">Street:</label>
         <input type="text" id="street" placeholder="Your Adress">
-      </div>  
+      </div>
       <div class="grid-two-column">
-          <div class="grid-item">
-              <label for="entrance">Entrance:</label>
-              <input type="text" id="entrance" placeholder="Entrance">
-          </div>
-          <div class="grid-item">
-              <label for="intercom">Intercom:</label>
-              <input type="text" id="intercom" placeholder="Intercom">
-          </div>
-          <div class="grid-item">
-              <label for="floor">Floor:</label>
-              <input type="text" id="floor" placeholder="Floor Number">
-          </div>
-          <div class="grid-item">
-              <label for="apartment">Apartment:</label>
-              <input type="text" id="apartment" placeholder="Apartment Number">
-          </div>
+        <div class="grid-item">
+          <label for="entrance">Entrance:</label>
+          <input type="text" id="entrance" placeholder="Entrance">
+        </div>
+        <div class="grid-item">
+          <label for="intercom">Intercom:</label>
+          <input type="text" id="intercom" placeholder="Intercom">
+        </div>
+        <div class="grid-item">
+          <label for="floor">Floor:</label>
+          <input type="text" id="floor" placeholder="Floor Number">
+        </div>
+        <div class="grid-item">
+          <label for="apartment">Apartment:</label>
+          <input type="text" id="apartment" placeholder="Apartment Number">
+        </div>
       </div>
       <div class="grid-item">
         <label for="comment">Comment for courier:</label>
@@ -76,18 +100,18 @@
 
     <div id="cart">
       <ul id="cart-items">
-          <!-- Cart items will be added here by JavaScript -->
+        <!-- Cart items will be added here by JavaScript -->
       </ul>
       <p id="cart-total">Total: $<span id="cart-total">0.00</span></p>
       <button class="form-buttons" id="clear-cart">Clear Cart</button>
     </div>
-
   </main>
 
+  <!----------FOOTER---------->
   <footer>
     <p>Team SweetCoders | Members: Bekasyl, Mereke, Zere, Danial</p>
   </footer>
-
+</div>
 </body>
 
 </html>

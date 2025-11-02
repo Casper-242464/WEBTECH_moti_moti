@@ -54,17 +54,6 @@ $(function() {
     return allValid;
   }
 
-  // Theme toggle (ensure exists first)
-  if (!$('#theme-toggle-delivery').length) {
-    var $themeBtn = $('<button/>', { id: 'theme-toggle-delivery', text: '🌙 Toggle Theme', 'class': 'btn' })
-      .css({ position: 'fixed', bottom: '100px', right: '20px', zIndex: 2147483647, pointerEvents: 'auto' })
-      .appendTo('body')
-      .on('click', function(){
-        $('body').toggleClass('dark-mode');
-        $(this).css('zIndex', 2147483647);
-      });
-  }
-
   // Submit handler
   $(document).on('click', '#submit-delivery', function(e){
     e.preventDefault();
