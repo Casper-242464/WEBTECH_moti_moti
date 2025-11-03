@@ -1,21 +1,19 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import telebot
-import os
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 CORS(app)  # Разрешаем CORS для любых источников
 
 # --- Настройки Telegram ---
 BOT_TOKEN = "8217178286:AAGWP-1TDmM1sm3bD9lPnJ9VU5qMzPdyEM8"
-CHAT_ID = "1686962725"     # твой numeric chat id
+CHAT_ID = "1686962725"
 bot = telebot.TeleBot(BOT_TOKEN)
 
-# Статика: открытие HTML
+# Главная страница — index.html (лежит рядом с app.py)
 @app.route('/')
 def index():
-    return send_file('index.html') 
-    return send_from_directory('static', 'delivery.html')
+    return send_file('index.html')
 
 # Обработка заказа
 @app.route('/submit_order', methods=['POST'])
@@ -57,5 +55,4 @@ def submit_order():
 
 
 if __name__ == "__main__":
-    app.run()
-    
+    app.run(host="0.0.0.0", port=5000)
