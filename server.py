@@ -32,7 +32,7 @@ def gallery():
 def delivery():
     return send_file(os.path.join(BASE_DIR, 'delivery.html'))
 
-@app.route('/contact.html')
+@app.route('/contacts.html')
 def contact():
     return send_file(os.path.join(BASE_DIR, 'contact.html'))
 
