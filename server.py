@@ -1,25 +1,58 @@
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import telebot
+import os
 
 app = Flask(__name__)
-CORS(app)  # Разрешаем CORS для любых источников
+CORS(app)
 
 # --- Настройки Telegram ---
 BOT_TOKEN = "8217178286:AAGWP-1TDmM1sm3bD9lPnJ9VU5qMzPdyEM8"
 CHAT_ID = "1686962725"
 bot = telebot.TeleBot(BOT_TOKEN)
 
-# Главная страница — index.html (лежит рядом с app.py)
-@app.route('/')
-def index():
-    return send_file('index.html')
+# Текущая папка с файлами
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Обработка заказа
+# --- HTML страницы ---
+@app.route('/')
+@app.route('/index.html')
+def index():
+    return send_file(os.path.join(BASE_DIR, 'index.html'))
+
+@app.route('/products.html')
+def products():
+    return send_file(os.path.join(BASE_DIR, 'products.html'))
+
+@app.route('/gallery.html')
+def gallery():
+    return send_file(os.path.join(BASE_DIR, 'gallery.html'))
+
+@app.route('/delivery.html')
+def delivery():
+    return send_file(os.path.join(BASE_DIR, 'delivery.html'))
+
+@app.route('/contact.html')
+def contact():
+    return send_file(os.path.join(BASE_DIR, 'contact.html'))
+
+@app.route('/locations.html')
+def locations():
+    return send_file(os.path.join(BASE_DIR, 'locations.html'))
+
+@app.route('/about.html')
+def about():
+    return send_file(os.path.join(BASE_DIR, 'about.html'))
+
+# --- Статика (JS, CSS, изображения) ---
+@app.route('/<path:filename>')
+def static_files(filename):
+    return send_file(os.path.join(BASE_DIR, filename))
+
+# --- Обработка заказа ---
 @app.route('/submit_order', methods=['POST'])
 def submit_order():
     data = request.json
-
     street = data.get('street')
     entrance = data.get('entrance')
     intercom = data.get('intercom')
@@ -28,7 +61,6 @@ def submit_order():
     comment = data.get('comment')
     cart = data.get('cart', [])
 
-    # Формируем сообщение для Telegram
     message = f"🧁 Новый заказ!\n\n" \
               f"📍 Адрес: {street}\n" \
               f"🚪 Подъезд: {entrance}\n" \
@@ -40,11 +72,8 @@ def submit_order():
     if cart:
         message += "🛒 Корзина:\n"
         for item in cart:
-            name = item.get('title')
-            price = item.get('price')
-            message += f"— {name} = {price}₸\n"
+            message += f"— {item.get('title')} = {item.get('price')}₸\n"
 
-    # Отправка в Telegram
     try:
         bot.send_message(CHAT_ID, message)
     except Exception as e:
