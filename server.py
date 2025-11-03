@@ -34,7 +34,7 @@ def delivery():
 
 @app.route('/contacts.html')
 def contact():
-    return send_file(os.path.join(BASE_DIR, 'contact.html'))
+    return send_file(os.path.join(BASE_DIR, 'contacts.html'))
 
 @app.route('/locations.html')
 def locations():
