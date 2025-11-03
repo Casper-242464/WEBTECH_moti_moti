@@ -14,6 +14,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 # Статика: открытие HTML
 @app.route('/')
 def index():
+    return send_file('index.html') 
     return send_from_directory('static', 'delivery.html')
 
 # Обработка заказа
