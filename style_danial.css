@@ -205,8 +205,8 @@
     gap: 5px;
     width: 35%;
     top: 5%;
-    left : 10%;
-    position: absolute;
+    left : 15%;
+    position: fixed;
   }
 
   /* Shopping cart styling */
@@ -234,7 +234,7 @@
 .dark-mode header,
 .dark-mode footer,
 .dark-mode .sidebar {
-  background-color: #333;
+  background-color: #1e1e1e;
   color: #f5f5f5;
 }
 
@@ -247,9 +247,6 @@
   border-color: #444;
 }
 
-.dark-mode a {
-  color: #9ad3ff;
-}
 
 .dark-mode .form-buttons,
 .dark-mode #clear-cart,
@@ -392,4 +389,12 @@
 .copy-tooltip.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+#cart-title {
+  font-weight: bold;
+  color : #d6336c;
+}
+.dark-mode #cart-title {
+  color : white;
 }
