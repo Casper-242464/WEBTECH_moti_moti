@@ -124,6 +124,9 @@
     margin-bottom: 5px;
     text-align: center;
   }
+  div #joke-card {
+    margin: 5vw;
+  }
 }
 
 /*----------------------------------------TABLET----------------------------------------*/
@@ -397,4 +400,13 @@
 }
 .dark-mode #cart-title {
   color : white;
+}
+
+div #joke-card {
+  margin: 5%;
+  padding: 10px;
+  border: 2px solid #ffb6c1;
+  border-radius: 10px;
+  background-color: #ffdee3;
+  max-width: 90%;
 }
