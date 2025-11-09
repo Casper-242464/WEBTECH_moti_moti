@@ -5,15 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Moti-Moti | Desserts</title>
-  <link rel="stylesheet" href="../css/page_layout.css">
-  <link rel="stylesheet" href="../css/style_danial.css">
+  <link rel="stylesheet" href="static/css/page_layout.css">
+  <link rel="stylesheet" href="static/css/style_danial.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
-<script src="../javaScript/general.js" defer></script>
-<script src="../javaScript/delivery.js" defer></script>
+<script src="static/js/general.js" defer></script>
+<script src="static/js/delivery.js" defer></script>
 
 <div class="layout_container">
   <!----------HEADER--------->
@@ -24,12 +24,12 @@
       <!-- Navigation links (hidden by default) -->
       <div id="myLinks" class="menuGrid">
         <a href="../index.html">Main</a>
-        <a href="../html/products.html">Products</a>
-        <a href="../html/gallery.html">Gallery</a>
-        <a href="../html/delivery.html">Cart</a>
-        <a href="../html/contacts.html">Contacts</a>
-        <a href="../html/locations.html">Locations</a>
-        <a href="../html/about.html">About Us</a>
+        <a href="../products.html">Products</a>
+        <a href="../gallery.html">Gallery</a>
+        <a href="../delivery.html">Cart</a>
+        <a href="../contacts.html">Contacts</a>
+        <a href="../locations.html">Locations</a>
+        <a href="../about.html">About Us</a>
       </div>
       <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
       <a href="javascript:void(0);" class="icon" onclick="navDropDown()">
@@ -42,10 +42,10 @@
     <nav class="generalLayout">
       <ul>
         <li><a href="../index.html">Main</a></li>
-        <li><a href="../html/delivery.html">Cart</a></li>
-        <li><a href="../html/about.html">About Us</a></li>
-        <li><a href="../html/contacts.html">Contacts</a></li>
-        <li><a href="../html/locations.html">Locations</a></li>
+        <li><a href="../delivery.html">Cart</a></li>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../contacts.html">Contacts</a></li>
+        <li><a href="../locations.html">Locations</a></li>
       </ul>
     </nav>
   </header>
@@ -54,9 +54,9 @@
     <aside class="sidebar">
       <h2>Categories</h2>
       <ul>
-        <li><a href="../html/products.html">Products</a></li>
-        <li><a href="../html/gallery.html">Gallery</a></li>
-        <li><a href="../html/reviews.html">Reviews</a></li>
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../gallery.html">Gallery</a></li>
+        <li><a href="../reviews.html">Reviews</a></li>
       </ul>
     </aside>
   </div>

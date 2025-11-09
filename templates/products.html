@@ -5,15 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Moti-Moti | Desserts</title>
-  <link rel="stylesheet" href="../css/page_layout.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/page_layout.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/style_mereke.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_mereke.css') }}">
 </head>
 
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
-<script src="../javaScript/general.js" defer></script>
-<script src="../javaScript/script.js" defer></script>
+<script src="{{ url_for('static', filename='js/general.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+ <script src="{{ url_for('static', filename='js/script_main.js') }}" defer></script>
 
 
   <div class="layout_container">
@@ -21,42 +22,48 @@
     <header>
       <!-----MOBILE ONLY DROPDOWN MENU----->
       <div class="topnav">
-        <a href="../index.html" class="active">Moti-Moti</a>
+        <a href="{{ url_for('index') }}" class="active">Moti-Moti</a>
         <!-- Navigation links (hidden by default) -->
         <div id="myLinks" class="menuGrid">
-          <a href="../index.html">Main</a>
-          <a href="../html/products.html">Products</a>
-          <a href="../html/gallery.html">Gallery</a>
-          <a href="../html/delivery.html">Cart</a>
-          <a href="../html/contacts.html">Contacts</a>
-          <a href="../html/locations.html">Locations</a>
-          <a href="../html/about.html">About Us</a>
+          <a href="{{ url_for('index') }}">Main</a>
+          <a href="{{ url_for('products') }}">Products</a>
+          <a href="{{ url_for('gallery') }}">Gallery</a>
+          <a href="{{ url_for('delivery') }}">Cart</a>
+          <a href="{{ url_for('contacts') }}">Contacts</a>
+          <a href="{{ url_for('locations') }}">Locations</a>
+          <a href="{{ url_for('about') }}">About Us</a>
         </div>
         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
         <a href="javascript:void(0);" class="icon" onclick="navDropDown()">
           <i class="fa fa-bars"></i>
         </a>
       </div>
-      <!-----TABLET AND LAPTOP MENU----->
+      
       <div id="logo" class="generalLayout">Moti-Moti</div>
       <nav class="generalLayout">
         <ul>
-          <li><a href="../index.html">Main</a></li>
-          <li><a href="../html/delivery.html">Cart</a></li>
-          <li><a href="../html/about.html">About Us</a></li>
-          <li><a href="../html/contacts.html">Contacts</a></li>
-          <li><a href="../html/locations.html">Locations</a></li>
+          <li><a href="{{ url_for('index') }}">Main</a></li>
+          <li><a href="{{ url_for('delivery') }}">Cart</a></li>
+          <li><a href="{{ url_for('about') }}">About Us</a></li>
+          <li><a href="{{ url_for('contacts') }}">Contacts</a></li>
+          <li><a href="{{ url_for('locations') }}">Locations</a></li>
+          {% if logged_in %}
+        <a href="/profile">Profile </a>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {% endif %}
         </ul>
       </nav>
     </header>
-    <!----------SIDEBAR---------->
+  
     <div id="sidebar" class="generalLayout">
       <aside class="sidebar">
         <h2>Categories</h2>
           <ul>
-            <li><a href="../html/products.html">Products</a></li>
-            <li><a href="../html/gallery.html">Gallery</a></li>
-            <li><a href="../html/reviews.html">Reviews</a></li>
+            <li><a href="{{ url_for('products') }}">Products</a></li>
+            <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+            <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
           </ul>
       </aside>
     </div>
@@ -95,7 +102,7 @@
 
           <div class="product-card">
             <div class="product-image">
-              <img src="../img/Без названия (6).jpeg" alt="Strawberry mochi" />
+              <img src="static/img/Без названия (6).jpeg" alt="Strawberry mochi" />
             </div>
             <div class="product-info">
               <div>
@@ -113,7 +120,7 @@
 
           <div class="product-card">
             <div class="product-image">
-              <img src="../img/Без названия (8).jpeg" alt="Tiramisu" />
+              <img src="static/img/Без названия (8).jpeg" alt="Tiramisu" />
             </div>
             <div class="product-info">
               <div>
@@ -129,7 +136,7 @@
 
           <div class="product-card">
             <div class="product-image">
-              <img src="../img/Без названия (9).jpeg" alt="Dubai chocolate" />
+              <img src="static/img/Без названия (9).jpeg" alt="Dubai chocolate" />
             </div>
             <div class="product-info">
               <div>
@@ -148,7 +155,7 @@
 
           <div class="product-card" id="strawberry">
             <div class="product-image">
-              <img src="../img/Без названия (10).jpeg" alt="Strawberry covered chocolate" />
+              <img src="static/img/Без названия (10).jpeg" alt="Strawberry covered chocolate" />
             </div>
             <div class="product-info">
               <div>
@@ -165,7 +172,7 @@
 
           <div class="product-card">
             <div class="product-image">
-              <img src="../img/images (3).jpeg" alt="Zhent covered chocolate" />
+              <img src="static/img/images (3).jpeg" alt="Zhent covered chocolate" />
             </div>
             <div class="product-info">
               <div>
@@ -181,7 +188,7 @@
 
           <div class="product-card">
             <div class="product-image">
-              <img src="../img/Без названия (11).jpeg" alt="PROFITEROLES" />
+              <img src="static/img/Без названия (11).jpeg" alt="PROFITEROLES" />
             </div>
             <div class="product-info">
               <div>
@@ -197,7 +204,7 @@
 
           <div class="product-card for_dark">
             <div class="product-image">
-              <img src="../img/Без названия (7).jpeg" alt="Mini Tarts" />
+              <img src="static/img/Без названия (7).jpeg" alt="Mini Tarts" />
             </div>
             <div class="product-info">
               <div class="for_dark">
