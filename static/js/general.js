@@ -76,3 +76,18 @@ function navDropDown() {
 
 })(jQuery);
    
+
+document.addEventListener('DOMContentLoaded', function() {
+  // если используем sessionStorage, можно оставить старый код
+  if (sessionStorage.getItem('user_logged_in') === 'true') {
+    document.getElementById('regBtn').style.display = 'none';
+    document.getElementById('loginBtn').style.display = 'none';
+  }
+
+  // при регистрации/логине ставим флаг
+  const regBtn = document.getElementById('regBtn');
+  const loginBtn = document.getElementById('loginBtn');
+
+  if (regBtn) regBtn.addEventListener('click', () => sessionStorage.setItem('user_logged_in', 'true'));
+  if (loginBtn) loginBtn.addEventListener('click', () => sessionStorage.setItem('user_logged_in', 'true'));
+});

@@ -234,3 +234,27 @@ body {
 .dark-mode p {
   color: var(--text);
 }
+
+.btn-header {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #ff6f61;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-header:hover {
+  background-color: #ff3b2e;
+}
+
+/* Для мобильного меню */
+.menuGrid .btn-header {
+  width: 100%;
+  text-align: center;
+  margin: 5px 0;
+}
+

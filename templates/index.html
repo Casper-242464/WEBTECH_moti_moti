@@ -7,16 +7,16 @@
   <title>Moti-Moti | Desserts</title>
 
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/page_layout.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/page_layout.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Bootstrap removed completely -->
 </head>
 
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
-  <script src="javaScript/general.js" defer></script>
-  <script src="javaScript/script_main.js" defer></script>
+  <script src="static/js/general.js" defer></script>
+  <script src="static/js//script_main.js" defer></script>
 
   <div class="layout_container">
     <!-- HEADER -->
@@ -26,12 +26,16 @@
 
         <div id="myLinks" class="menuGrid" aria-hidden="true">
           <a href="index.html">Main</a>
-          <a href="html/products.html">Products</a>
-          <a href="html/gallery.html">Gallery</a>
-          <a href="html/delivery.html">Cart</a>
-          <a href="html/contacts.html">Contacts</a>
-          <a href="html/locations.html">Locations</a>
-          <a href="html/about.html">About Us</a>
+          <a href="templates/products.html">Products</a>
+          <a href="templates/gallery.html">Gallery</a>
+          <a href="templates/delivery.html">Cart</a>
+          <a href="templates/contacts.html">Contacts</a>
+          <a href="templates/locations.html">Locations</a>
+          <a href="templates/about.html">About Us</a>
+           <!-- Кнопки для регистрации и логина -->
+<a href="../templates/register.html" class="btn-header" id="regBtn">Registration</a>
+<a href="../templates/login.html" class="btn-header" id="loginBtn">Login</a>
+
         </div>
 
         <a href="javascript:void(0);" class="icon" onclick="navDropDown()" aria-label="menu">
@@ -44,10 +48,23 @@
       <nav class="generalLayout" id="main-nav" role="navigation" aria-label="Main">
         <ul>
           <li><a href="index.html">Main</a></li>
-          <li><a href="html/delivery.html">Cart</a></li>
-          <li><a href="html/about.html">About Us</a></li>
-          <li><a href="html/contacts.html">Contacts</a></li>
-          <li><a href="html/locations.html">Locations</a></li>
+          <li><a href="templates/delivery.html">Cart</a></li>
+          <li><a href="templates/about.html">About Us</a></li>
+          <li><a href="templates/contacts.html">Contacts</a></li>
+          <li><a href="templates/locations.html">Locations</a></li>
+          <!-- Кнопки для регистрации и логина -->
+         {% if logged_in %}
+        <li><a href="/profile">Profile ({{ username }})</a></li>
+        <li>
+          <form method="POST" action="/logout">
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {% endif %}
+
         </ul>
       </nav>
     </header>
@@ -57,9 +74,9 @@
       <aside class="sidebar">
         <h2>Categories</h2>
         <ul>
-          <li><a href="html/products.html">Products</a></li>
-          <li><a href="html/gallery.html">Gallery</a></li>
-          <li><a href="html/reviews.html">Reviews</a></li>
+          <li><a href="templates/products.html">Products</a></li>
+          <li><a href="templates/gallery.html">Gallery</a></li>
+          <li><a href="templates/reviews.html">Reviews</a></li>
         </ul>
       </aside>
     </div>
@@ -76,7 +93,7 @@
       <section class="welcome-section searchable">
         <h1>Добро пожаловать в Moti-Moti!</h1>
         <p>Онлайн-магазин десертов: вкусно, сладко и с любовью 💖</p>
-        <a href="html/products.html" class="btn-primary">Смотреть товары</a>
+        <a href="templates/products.html" class="btn-primary">Смотреть товары</a>
       </section>
 
       <!-- Carousel (custom, no Bootstrap) -->
@@ -113,7 +130,7 @@
             <div class="card-body">
               <h5 class="card-title">Matcha Cake</h5>
               <p class="card-text">Нежный бисквит с кремом из матча и белого шоколада.</p>
-               <a href="html/products.html">
+               <a href="templates/products.html">
               <button class="btn">Buy</button></a>
             </div>
           </article>
@@ -123,7 +140,7 @@
             <div class="card-body">
               <h5 class="card-title">Ice Mochi</h5>
               <p class="card-text">Refreshing taste ❄️</p>
-                     <a href="html/products.html">
+                     <a href="templates/products.html">
               <button class="btn">Buy</button></a>
             </div>
           </article>
