@@ -95,6 +95,18 @@
       <p><strong>Email:</strong> moti-moti@mail.com</p>
       <p><strong>Hours:</strong> Monday - Friday 10am to 5pm</p>
     </div>
+
+    <section id="joke-widget" class="joke-section" aria-live="polite" style="max-width:420px;">
+      <div id="joke-card">
+        <p id="joke-setup" style="font-weight:600;margin:0 0 8px;">Want a joke?</p>
+        <p id="joke-punchline" style="margin:0 0 12px;color:#444;"></p>
+        <div style="display:flex;gap:8px;">
+          <button id="fetch-joke-btn" class="btn" type="button">Get random joke</button>
+          <button id="clear-joke-btn" class="btn" type="button">Clear</button>
+        </div>
+        <p id="joke-error" role="status" aria-live="polite" style="color:#b00;margin:8px 0 0;display:none"></p>
+      </div>
+    </section>
   </main>
 
   <!----------FOOTER---------->

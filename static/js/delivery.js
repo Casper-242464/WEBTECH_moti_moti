@@ -228,3 +228,51 @@ function loadCart() {
 
   loadCart();
 });
+
+(function () {
+  const API_URL = 'https://official-joke-api.appspot.com/random_joke';
+  const fetchBtn = document.getElementById('fetch-joke-btn');
+  const clearBtn = document.getElementById('clear-joke-btn');
+  const setupEl = document.getElementById('joke-setup');
+  const punchEl = document.getElementById('joke-punchline');
+  const errorEl = document.getElementById('joke-error');
+
+  if (!fetchBtn) return; // widget not present on every page
+
+  async function fetchJoke() {
+    try {
+      errorEl.style.display = 'none';
+      fetchBtn.disabled = true;
+      fetchBtn.textContent = 'Loading…';
+      setupEl.textContent = '';
+      punchEl.textContent = '';
+
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error('Network response was not OK');
+
+      const data = await res.json();
+      // expected: { id, type, setup, punchline }
+      setupEl.textContent = data.setup || '';
+      punchEl.textContent = data.punchline || '';
+    } catch (err) {
+      setupEl.textContent = 'Could not load joke.';
+      punchEl.textContent = '';
+      errorEl.textContent = err.message || 'Error fetching joke';
+      errorEl.style.display = 'block';
+      console.error('fetchJoke error:', err);
+    } finally {
+      fetchBtn.disabled = false;
+      fetchBtn.textContent = 'Get random joke';
+    }
+  }
+
+  fetchBtn.addEventListener('click', fetchJoke);
+  clearBtn.addEventListener('click', function () {
+    setupEl.textContent = 'Want a joke?';
+    punchEl.textContent = '';
+    errorEl.style.display = 'none';
+  });
+
+  // Optional: fetch one joke when the widget is visible
+  // fetchJoke();
+})();
